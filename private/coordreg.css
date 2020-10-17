@@ -1,0 +1,175 @@
+.coordRegContainer {
+    margin-top: 0;
+    width: 90%;
+    margin: auto;
+    font-size: 16px;
+    color: #444444;
+}
+
+.coordRegContainer h3 {
+    font-size: 18px;
+}
+
+.coordRegContainer div {
+    padding: 2px 0;
+}
+
+.coordRegContainer input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: #DFDFDF;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: #eeeeee;
+    border: none;
+    border-radius: 0;
+}
+
+.mainDocumentsContainerPC {
+    display: block;
+}
+
+.coordRegButtonDiv {
+    width: 70%;
+    margin: 10px auto;
+}
+
+.coordRegButtonDiv button {
+    width: 100%;
+    background: #C89B46;
+    color: #ffffff;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.coordRegSelector {
+    width: calc(100% - 0px);
+    border: none;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+#coordRegErr {
+    color: rgba(255, 0, 0, 0.88);
+}
+
+#loaderWindow {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(40, 40, 40, 0.75);
+}
+
+#loaderWindow div {
+    width: 80%;
+    margin: 70% auto;
+    padding: 20px 10px;
+    text-align: center;
+    background: rgba(240, 240, 240);
+    border-radius: 10px;
+}
+
+#loaderWindow button {
+    border: 0;
+    background: #C89B46;
+    color: #ffffff;
+    width: 30%;
+    height: 35px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.backgroundForPopUpWindow {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    text-align: center;
+    z-index: 2;
+}
+
+.backgroundForPopUpWindow .popUpContent {
+    margin: auto;
+    position: fixed;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    background: #DFDFDF;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.backgroundForPopUpWindow button {
+    width: 60%;
+    background: #c89b46;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.backgroundForPopUpWindow button:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .coordRegContainer {
+        width: 100%;
+    }
+    .coordRegContainer input {
+        width: calc(235px -20px);
+    }
+    .mainDocumentsContainerPC {
+        display: inline-block;
+        margin-top: 0;
+    }
+    .coordRegSelector {
+        border: 1px solid #888888;
+        padding: 2px;
+        width: calc(235px - 4px);
+        border-radius: 4px;
+    }
+    .backgroundForPopUpWindow .popUpContent {
+        width: 500px;
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    .coordRegContainer {
+        width: 100%;
+    }
+    .coordRegContainer input {
+        width: calc(310px -20px);
+    }
+    .mainDocumentsContainerPC {
+        display: inline-block;
+        margin-top: 0;
+    }
+    .coordRegSelector {
+        border: 1px solid #888888;
+        padding: 2px;
+        width: calc(310px - 4px);
+        border-radius: 4px;
+    }
+    .backgroundForPopUpWindow .popUpContent {
+        width: 500px;
+    }
+}

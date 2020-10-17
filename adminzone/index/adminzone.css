@@ -1,0 +1,417 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #444444;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.note-group-select-from-files {
+    display: none;
+}
+
+.sn-checkbox-use-protocol {
+    display: none;
+}
+
+.sn-checkbox-open-in-new-window {
+    display: none;
+}
+
+.checkbox {
+    display: none;
+}
+
+.headH {
+    font-size: 18px;
+}
+
+.menuNav {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+#adminMenuNav {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#adminMenuNav div {
+    width: 100%;
+    height: 40px;
+}
+
+#adminMenuNav button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #4B7FB6;
+    color: #ffffff;
+    border-top: 1px solid #888888;
+    font-size: 16px;
+}
+
+#adminMenuNav button:hover {
+    color: #4B7FB6;
+    background: #EEEEEE;
+}
+
+.adminMenuNavCont1 button {
+    border-radius: 10px 10px 0 0;
+}
+
+.adminMenuNavCont5 button {
+    border-radius: 0 0 10px 10px;
+}
+
+button:focus {
+    outline: none;
+}
+
+button::-moz-focus-inner {
+    border: none;
+}
+
+.pageEditorImg {
+    width: 90%;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .menuNav {
+        width: 720px;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    #adminMenuNav div {
+        display: inline-block;
+        width: 20%;
+        margin-right: -4px;
+        vertical-align: middle;
+    }
+    #adminMenuNav button {
+        border: none;
+        border-right: 1px solid #888888;
+    }
+    .adminMenuNavCont1 button {
+        border-radius: 10px 0 0 10px;
+    }
+    .adminMenuNavCont5 button {
+        border-radius: 0 10px 10px 0;
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    .menuNav {
+        width: 960px;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    #adminMenuNav div {
+        display: inline-block;
+        width: 20%;
+        margin-right: -4px;
+        vertical-align: middle;
+    }
+    #adminMenuNav button {
+        border: none;
+        border-right: 1px solid #888888;
+    }
+    .adminMenuNavCont1 button {
+        border-radius: 10px 0 0 10px;
+    }
+    .adminMenuNavCont5 button {
+        border-radius: 0 10px 10px 0;
+    }
+}
+
+
+/*
+
+Главная часть экрана 
+
+*/
+
+.mainPartOfAdminPage {
+    width: 90%;
+    margin: auto;
+    max-width: 960px;
+}
+
+.adminMainPageContent {
+    width: 90%;
+    margin: auto;
+}
+
+.adminMainPageContent button {
+    width: 80%;
+    margin: auto;
+}
+
+.adminMainPageContent a {
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(23, 29, 85);
+}
+
+.adminMainPageContent a:hover {
+    color: rgb(23, 43, 224);
+}
+
+.adminMainPageContent div {
+    margin: 15px 0;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .mainPartOfAdminPage {
+        width: 720px;
+        margin: auto;
+    }
+    .adminMainPageContent button {
+        width: 30%;
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    .mainPartOfAdminPage {
+        max-width: 960px;
+        margin: auto;
+    }
+    .adminMainPageContent button {
+        width: 30%;
+    }
+}
+
+.hiddenMenuNav {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+.hiddenMenuNav div {
+    width: 100%;
+    height: 40px;
+}
+
+.hiddenMenuNav button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #c89b46;
+    color: #fff;
+    border-bottom: 1px solid #888888;
+    font-size: 16px;
+}
+
+.hiddenMenuNav button:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.hiddenMenuNav1 button {
+    border-radius: 10px 10px 0 0;
+}
+
+.hiddenMenuNav2 button {
+    border-radius: 0 0 10px 10px;
+    border: none;
+}
+
+@media screen and (min-device-width: 760px) {
+    .hiddenMenuNav {
+        width: 400px;
+        margin: auto;
+        padding: 0;
+    }
+    .hiddenMenuNav div {
+        width: 200px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: -5px;
+        height: 40px;
+    }
+    .hiddenMenuNav button {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: #c89b46;
+        color: #fff;
+        font-size: 16px;
+        border-right: 1px solid #888888;
+    }
+    .hiddenMenuNav1 button {
+        border-radius: 10px 0 0 10px;
+    }
+    .hiddenMenuNav2 button {
+        border-radius: 0 10px 10px 0;
+        border: none;
+    }
+}
+
+
+/*
+
+НОВОСТИИИ
+
+*/
+
+
+/*
+
+Добавление новости
+
+*/
+
+.sectionContainers {
+    margin-bottom: 300px;
+}
+
+.newsContent input {
+    border: none;
+    width: calc(100% - 16px);
+    margin: 10px 0;
+    padding: 8px;
+    background: #dfdfdf;
+    border-radius: 8px;
+}
+
+#newsAddInputPhoto {
+    border: none;
+}
+
+.editNewsLabel {
+    display: block;
+    width: calc(100% - 16px);
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(86, 184, 110, 0.466);
+    color: #666666;
+}
+
+
+/*
+
+Список новостей
+
+*/
+
+.noMobileDesign {
+    display: none;
+}
+
+.oneNewsFromList {
+    width: 100%;
+    margin: auto;
+    padding: 20px 0;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #999999;
+}
+
+.visibleNewsPart h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.visibleNewsPart img {
+    width: 100%;
+}
+
+.deleteNewsButton {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    background: #B21306;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.closeNewsButton {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    background: rgb(178, 132, 6);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.saveNewsButton {
+    width: 100%;
+    height: 30px;
+    margin: 5px 0;
+    background: #339933;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.hiddenNewsPart input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    margin: 5px 0;
+}
+
+@media screen and (min-device-width: 760px) {
+    .noMobileDesign {
+        display: block;
+    }
+    .newsHiddenInfo,
+    .visibleNewsPart div {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+    .newsHiddenInfoDiv1,
+    .visibleNewsName {
+        width: 18%;
+    }
+    .newsHiddenInfoDiv2,
+    .visibleNewsDescription {
+        width: 57%;
+    }
+    .newsHiddenInfoDiv3,
+    .visibleNewsImg {
+        width: 25%;
+    }
+    /*
+    .hiddenNewsPart button {
+        margin: 10px;
+        padding: 0;
+        width: calc(100% / 3 - 24px);
+    }   */
+    .hiddenNewsButtons {
+        margin: 10px;
+        padding: 0;
+        width: calc(100% / 3 - 25px);
+    }
+}
+
+
+/*
+
+Номинации
+
+*/
+
+
+/*
+
+Список номинаций
+
+*/
+
+.NominationsContainers {
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #888888;
+}
+
+#testListArticle {
+    border-bottom: 1px solid #888888;
+}

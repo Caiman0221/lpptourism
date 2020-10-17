@@ -1,0 +1,179 @@
+#adminTestsContainer {
+    margin-bottom: 300px;
+}
+
+.newNominationContainer {
+    width: 95%;
+    margin: 10px auto;
+}
+
+.newNominationContainer div {
+    padding: 5px 0;
+}
+
+.nominationsContainer {
+    margin: 10px auto;
+    border-top: 1px solid #888888;
+    padding: 5px 0;
+}
+
+.nominationName {
+    padding: 5px 0;
+}
+
+.nominationDellButton button {
+    width: 40%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+@media screen and (min-device-width: 760px) {
+    #listOfNominations {
+        width: 80%;
+        margin: auto;
+    }
+    .nominationsContainer div {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .nominationName {
+        width: 60%;
+        margin-right: -4px;
+    }
+    .nominationName div {
+        width: 49%;
+    }
+    .nominationDellButton {
+        width: 40%;
+        margin-right: -4px;
+    }
+}
+
+.OneTestNameInput {
+    margin: 10px auto;
+}
+
+.OneTestNameInput input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    background: #dfdfdf;
+    border: none;
+    border-radius: 8px;
+}
+
+.TestsContainer {
+    width: 95%;
+    margin: auto;
+}
+
+.QuestionContainer {
+    width: 90%;
+    margin-right: -4px;
+    display: inline-block;
+}
+
+.addNewQuestionButtonContainer {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.DellQuestionButtonContainer {
+    width: 10%;
+    margin-right: -4px;
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.OneQuestionContainer {
+    padding: 5px 0 20px 0;
+    margin-top: 15px;
+    border-top: 1px solid #888888;
+    border-bottom: 1px solid #888888;
+}
+
+.QuestionContainer {
+    text-align: left;
+}
+
+.QuestionContent {
+    margin: 10px 0;
+}
+
+.QuestionContent input {
+    padding: 8px;
+    width: calc(100% - 16px);
+    margin: 5px 0;
+    background: #dfdfdf;
+    border: none;
+    border-radius: 8px;
+}
+
+.AnswerContent {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.AnsewerCheckboxes {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.AnswerInputClass {
+    padding: 8px;
+    width: calc(80% - 16px);
+    border: none;
+    background: #dfdfdf;
+    border-radius: 8px;
+}
+
+.OtherInfoOfAnswerContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.addNewAnswerButtonContainer {
+    margin: 10px auto;
+    width: 60%;
+}
+
+.OtherInfoOfAnswerContainer span {
+    width: 40%;
+    margin: 0 5px;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+}
+
+.OtherInfoOfAnswerContainer input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    border: none;
+    background: #dfdfdf;
+    border-radius: 8px;
+}
+
+.errorDivContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.addTestInDB {
+    margin: 10px auto;
+}
+
+@media screen and (min-device-width: 760px) {
+    .addNewQuestionButtonContainer,
+    .addTestInDB {
+        width: 60%;
+        margin: 15px auto;
+    }
+}
+
+.hiddenListTest {
+    font-size: 17px;
+    padding: 20px 0;
+    border-top: 1px solid #888888;
+    border-bottom: 1px solid #888888;
+}

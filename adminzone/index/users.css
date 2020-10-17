@@ -1,0 +1,367 @@
+#newUserFromAdminZone {
+    border: 0;
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.hiddenMenuNavMB {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+.hiddenMenuNavMB div {
+    width: 100%;
+    height: 40px;
+}
+
+.hiddenMenuNavMB button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #c89b46;
+    color: #fff;
+    border-bottom: 1px solid #888888;
+    font-size: 16px;
+}
+
+.hiddenMenuNavMB button:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.hiddenMenuNavMB1 button {
+    border-radius: 10px 10px 0 0;
+}
+
+.hiddenMenuNavMB2 button {
+    border-radius: 0 0 10px 10px;
+}
+
+.newUserCard {
+    text-align: center;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.newUserCardText {
+    text-align: left;
+    margin: 2px 0;
+}
+
+.newUserCard div {
+    margin: 8px 0;
+}
+
+.newUserCardInput {
+    padding: 8px;
+    width: calc(100% - 16px);
+    background: #dfdfdf;
+    border: none;
+    border-radius: 5px;
+}
+
+.newUserCard button {
+    background: #c89b46;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 8px 30px;
+    margin: 15px 0 30px 0;
+    border-radius: 5px;
+}
+
+.newUserCard button:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.newUserCard select,
+.selectorForUsers {
+    padding: 8px;
+    width: 100%;
+    background: #dfdfdf;
+    border: none;
+    color: #000000;
+    border-radius: 5px;
+}
+
+.newUserCard span {
+    width: 35px;
+}
+
+.checkbox {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.usersSearchMenu {
+    width: 90%;
+    border-bottom: 1px solid #888888;
+    margin: auto;
+    padding: 10px;
+}
+
+.usersUpperMenuInline {
+    margin: 10px 0;
+}
+
+.usersUpperMenuInline div {
+    margin: 5px 0;
+}
+
+.greenButton {
+    width: 100%;
+    background: #339933;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.greenButton:hover {
+    background: #00c700;
+}
+
+.yellowButton {
+    width: 100%;
+    background: #c89b46;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.yellowButton:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.redButton {
+    width: 100%;
+    font-size: 16px;
+    color: #fff;
+    background: #b21406;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+.redButton:hover {
+    background: #ff1500;
+}
+
+.littleSelect {
+    width: 60px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    background: #dfdfdf;
+}
+
+@media screen and (min-device-width: 760px) {
+    .hiddenMenuNavMB {
+        width: 90%;
+        text-align: center;
+    }
+    .hiddenMenuNavMB div {
+        display: inline-block;
+        width: 20%;
+        margin-right: -4px;
+        vertical-align: middle;
+        border: none;
+    }
+    .hiddenMenuNavMB button {
+        border-left: 1px solid #888888;
+        font-size: 15px;
+    }
+    .hiddenMenuNavMB1 button {
+        border-radius: 10px 0 0 10px;
+    }
+    .hiddenMenuNavMB2 button {
+        border-radius: 0 10px 10px 0;
+    }
+    .usersSearchMenu {
+        width: 100%;
+        border-bottom: 1px solid #888888;
+        margin: auto;
+        padding: 0;
+    }
+    .usersUpperMenuInline {
+        display: inline-block;
+        margin-right: -4px;
+        padding: 0 20px;
+        vertical-align: middle;
+    }
+    .usersUpperMenuLeft {
+        width: calc(65% - 40px);
+    }
+    .usersUpperMenuRight {
+        width: calc(35% - 40px);
+    }
+}
+
+.oneUserTable {
+    border-top: 1px solid #666666;
+    width: 95%;
+    margin: auto;
+}
+
+.visibleUserPart {
+    width: 100%;
+}
+
+.visibleLeftUserPart {
+    display: inline-block;
+    width: 10%;
+    margin-left: -4px;
+    vertical-align: middle;
+}
+
+.visibleLeftUserPart input {
+    width: 20px;
+    height: 20px;
+}
+
+.visibleCenterUserPart {
+    display: inline-block;
+    width: 50%;
+    margin-left: -4px;
+    vertical-align: middle;
+}
+
+.visibleRightUserPart {
+    display: inline-block;
+    width: 40%;
+    margin-left: -4px;
+    vertical-align: middle;
+}
+
+.delUserButtonlClick {
+    width: 120px;
+    font-size: 16px;
+    color: #fff;
+    background: #B21306;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 0;
+    margin: 5px 0;
+}
+
+.editUserButtonClick {
+    width: 120px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    background: rgb(178, 132, 6);
+    border-radius: 5px;
+    padding: 8px 0;
+    margin: 5px 0;
+}
+
+.hiddenUserButtons {
+    width: 100%;
+    text-align: center;
+}
+
+.closeUserEditing {
+    margin: 10px 5px;
+    font-size: 16px;
+    padding: 8px 30px;
+    color: #fff;
+    background: rgb(178, 132, 6);
+    border: none;
+    border-radius: 5px;
+}
+
+.submitUserEditing {
+    margin: 10px 5px;
+    font-size: 16px;
+    padding: 8px 30px;
+    color: #fff;
+    background: #339933;
+    border: none;
+    border-radius: 5px;
+}
+
+#CoordsContainer {
+    margin: 10px 0;
+}
+
+.pageEditorMenu {
+    margin: 15px auto;
+    text-align: center;
+}
+
+.pageEditorMenuInline div {
+    margin: 5px 0;
+}
+
+.pageEditorMenuInline select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background: #dfdfdf;
+}
+
+@media screen and (min-device-width: 760px) {
+    .oneCoordTable {
+        padding: 10px 0;
+    }
+    .visibleCoordPart {
+        margin-bottom: 30px;
+    }
+    .visibleLeftUserPart {
+        width: 5%;
+    }
+    .visibleCenterUserPart {
+        vertical-align: middle;
+        width: 55%;
+        padding-left: 2%;
+    }
+    .visibleRightUserPart {
+        vertical-align: middle;
+        width: 38%;
+        text-align: right;
+    }
+    .visibleRightUserPart div {
+        display: inline-block;
+    }
+    .visibleCenterUserPart div {
+        display: inline-block;
+        padding-left: 10px;
+    }
+    .pageEditorMenu {
+        margin: 15px auto;
+        text-align: unset;
+    }
+    .pageEditorMenuInline {
+        display: inline-block;
+    }
+    .pageEditorMenuInlineSelect {
+        width: 70%;
+        margin-right: -4px;
+    }
+    .pageEditorMenuInlineButton {
+        width: 30%;
+        margin-right: -4px;
+        text-align: right;
+    }
+    .pageEditorMenuInline div {
+        margin: 5px 0;
+    }
+    .pageEditorMenuInline select {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+        background: #dfdfdf;
+    }
+}

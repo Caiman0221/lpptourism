@@ -1,0 +1,614 @@
+#participantPage {
+    display: block;
+}
+
+#expertPage {
+    display: block;
+}
+
+#coordPage {
+    display: block;
+}
+
+
+/*
+
+coordPage
+
+*/
+
+.coordMenuContainer {
+    width: 90%;
+    padding: 0;
+    margin: 20px auto;
+}
+
+.coordMenuContainer button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: #5284B9;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.coordMenuContainer button:focus {
+    outline: none;
+}
+
+.coordMenuContainer button::-moz-focus-inner {
+    border: none;
+}
+
+.coordMenuContainer button:hover {
+    color: #4B7FB6;
+    background: #EEEEEE;
+}
+
+.coordCabinet {
+    border-radius: 10px 10px 0 0;
+}
+
+.coordExit {
+    border-radius: 0 0 10px 10px;
+}
+
+.coordNewPartTable h3 {
+    font-size: 16px;
+    color: #666666;
+    width: 90%;
+    margin: 10px auto;
+    text-align: left;
+}
+
+.coordNewPartTable input {
+    padding: 8px;
+    background: #DFDFDF;
+    width: calc(90% - 16px);
+    border: none;
+    border-radius: 5px;
+}
+
+.ctuNomination {
+    padding: 8px;
+    width: calc(90%);
+    border-radius: 5px;
+    color: #000000;
+    margin: 0;
+    border: none;
+    background: #dfdfdf;
+}
+
+#coordNewPartErr {
+    margin: 15px 0;
+}
+
+#submitUserProfile,
+.yellowButton {
+    background: #c89b46;
+    color: #ffffff;
+    padding: 8px 20px;
+    margin: 10px auto;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+#submitUserProfile:hover,
+.yellowButton:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.ButtonsForLoading {
+    margin: 15px auto;
+}
+
+.ButtonsForLoading label {
+    padding: 8px 50px;
+    background: rgba(86, 184, 110, 0.466);
+    color: #666666;
+}
+
+.coordPageDownloadWorkLog button {
+    background: #c89b46;
+    color: #ffffff;
+    padding: 8px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+.coordPageDownloadWorkLog button:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.normFilesContainer {
+    width: 85%;
+    margin: auto;
+}
+
+.normFileContent {
+    margin: 10px 0;
+}
+
+.normFileContent div {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.normFileContentLink {
+    width: 90%;
+    text-align: left;
+}
+
+.normFileContentLink a {
+    word-wrap: break-word;
+    text-decoration: none;
+    font-size: 16px;
+    color: #444444;
+}
+
+.normFileContentButton {
+    width: 10%;
+    text-align: right;
+}
+
+.dellDocButton {
+    padding: 3px 5px;
+    text-align: center;
+    color: #ffffff;
+    background: rgb(158, 45, 45);
+    border: none;
+    border-radius: 8px;
+}
+
+.dellDocButton:hover {
+    background: rgb(200, 45, 45, 0.8);
+}
+
+.tableForPartsList {
+    width: 85%;
+    margin: auto;
+}
+
+.coordOnePartList {
+    width: 100%;
+}
+
+.coordOnePartList div {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.coordPartListName {
+    width: 90%;
+    word-wrap: break-word;
+    text-align: left;
+    padding: 10px 0;
+}
+
+.coordPartListName:hover {
+    background: rgba(86, 184, 111, 0.198);
+}
+
+.coordPartListButton {
+    width: 10%;
+    text-align: right;
+}
+
+.coordPageRegulations a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #666666;
+    display: block;
+    padding: 1px 0;
+}
+
+.coordPageRegulations a:hover {
+    color: rgba(86, 184, 110, 0.80);
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .coordNewPartTable {
+        width: 490px;
+    }
+
+    .coordNewPartTable h3 {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    .coordNewPartTable {
+        width: 625px;
+    }
+
+    .coordNewPartTable h3 {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-device-width: 760px) {
+    .coordMenuContainer {
+        width: 720px;
+        margin: auto;
+    }
+
+    .coordMenuContainer div {
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: -4px;
+    }
+
+    .coordMenuContainer button {
+        height: 65px;
+        font-size: 14px;
+    }
+
+    .coordCabinetContainer {
+        width: 10%;
+    }
+
+    .coordRegulationsContainer {
+        width: 22%;
+    }
+
+    .coordDownloadWorkLogContainer {
+        width: 28%;
+    }
+
+    .coordCreateProfileContainer {
+        width: 30%;
+    }
+
+    .coordExitContainer {
+        width: 10%;
+    }
+
+    .coordCabinet {
+        border-radius: 10px 0 0 10px;
+    }
+
+    .coordExit {
+        border-radius: 0 10px 10px 0;
+    }
+
+    @media screen and (min-device-width: 995px) {
+        .coordMenuContainer {
+            width: 940px;
+        }
+
+        .coordMenuContainer button {
+            height: 45px;
+        }
+    }
+}
+
+.coordPage {
+    width: 100%;
+}
+
+.coordPage h2 {
+    color: #4E82B7;
+    font-size: 18px;
+}
+
+@media screen and (min-device-width: 760px) {
+    .coordPage {
+        width: 720px;
+        margin: auto;
+    }
+
+    .normFilesContainer {
+        margin: 0;
+    }
+
+    .coordPageCabinetContent {
+        display: inline-block;
+        margin-right: -4px;
+        width: 50%;
+        vertical-align: top;
+    }
+
+    @media screen and (min-device-width: 995px) {
+        .coordPage {
+            width: 940px;
+        }
+    }
+}
+
+
+/*
+
+participantPage
+
+*/
+
+.mainContainerContent {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.participantProfile {
+    color: #4B7FB6;
+    width: 100%;
+    margin: 10px auto;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.participantTableInfo {
+    width: 100%;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.participantTableInfo div {
+    display: inline-block;
+    margin-right: -4px;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size: 16px;
+    color: #666666;
+}
+
+.participantTableName {
+    width: 35%;
+    text-align: left;
+}
+
+.participantTableRes {
+    width: 65%;
+    text-align: left;
+}
+
+
+/* 
+
+Right side of participant page 
+
+*/
+
+.participantTests {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.participantsTestsContent {
+    padding: 0;
+    font-size: 16px;
+}
+
+.participantsTestsContent button {
+    height: 55px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    color: #ffffff;
+    margin: 10px 0;
+}
+
+.passTheTestButton {
+    background: #C89B46;
+}
+
+.creativeWorkButton {
+    background: #4E82B7;
+}
+
+.participantsTestsContent a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #666666;
+}
+
+.participantsTestsContent h2 {
+    font-size: 19px;
+    color: #4B7FB6;
+}
+
+.participantsTestsContent button:hover,
+:active,
+:focus,
+::-moz-focus-inner {
+    border: none;
+    outline: none;
+}
+
+@media screen and (min-device-width: 760px) {
+    .mainContainerContent {
+        display: inline-block;
+        margin-right: -5px;
+        vertical-align: top;
+    }
+
+    .participantTable {
+        width: 65%;
+    }
+
+    .participantTests {
+        width: 35%;
+    }
+
+    .participantsTestsContent {
+        width: 95%;
+        margin: auto;
+    }
+
+    .passTheTestButton:hover {
+        background: #FACD78;
+        color: #966914;
+    }
+
+    .creativeWorkButton:hover {
+        color: #4B7FB6;
+        background: #EEEEEE;
+    }
+
+    .participantsTestsContent button:focus {
+        outline: none;
+    }
+
+    .participantsTestsContent button::-moz-focus-inner {
+        border: none;
+    }
+}
+
+
+/* 
+
+expertPart
+
+*/
+
+/*
+.expertContainerNaming {
+    width: 930px;
+    margin: auto;
+}
+*/
+.expertContainerNaming {
+    width: 90%;
+    max-width: 930px;
+    margin: auto;
+}
+
+.expertContainer {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 16px;
+    color: #666666;
+}
+
+.expertContainerNaming h2 {
+    color: #4B7FB6;
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.expertContainerNaming div {
+    margin: 10px 0;
+}
+
+.expertContainerNaming select {
+    padding: 10px 5px;
+    border-radius: 8px;
+    border: none;
+    background: #dfdfdf;
+    max-width: 100%;
+}
+
+/* EXPERT TABLE*/
+.tableForExpertName {
+    width: 930px;
+    margin: 15px auto;
+}
+
+.tableForExpert {
+    width: 100%;
+}
+
+.tableForExpertName {
+    width: 90%;
+    margin: 15px auto;
+}
+
+.tableForExpertContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tableForExpertName {
+    width: 90%;
+    margin: auto;
+}
+
+.ExpertTable {
+    width: 1200px;
+    margin: 15px auto;
+}
+.tableHeader {
+    border-bottom: 1px solid #888888;
+}
+
+.inlineExpertTable {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -4px;
+    text-align: center;
+}
+
+.partName,
+.partLocation {
+    width: 10%;
+}
+
+.partWork, .partTest, .partRes {
+    width: 6%;
+}
+
+.partK1,
+.partK2,
+.partK3,
+.partK4,
+.partK5 {
+    width: calc((100% - 10% * 2 - 6% * 3) / 5);
+}
+
+.expertKInputs {
+    width: 35px;
+    border-radius: 5px;
+    border: none;
+    background: #efefef;
+    padding: 8px;
+}
+
+.expertK5Checkbox {
+    width: 20px;
+    height: 20px;
+}
+.submitExpertButton {
+    width: 24px;
+    height: 24px; 
+    background: rgba(86, 184, 110, 0.9);
+    color: #ffffff;
+    border-radius: 12px;
+    border: none;
+    text-align: center;
+}
+.submitExpertButton:hover {
+    background: rgba(48, 216, 90, 0.9);
+}
+@media screen and (min-device-width: 1200px) and (max-device-width: 2000px) {
+    .ExpertTable {
+        width: 90%;
+        margin: 15px auto;
+    }   
+}
+@media screen and (min-device-width: 2000px) {
+    .ExpertTable {
+        width: 1700;
+        margin: 15px auto;
+    }   
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .tableForExpertName {
+        width: 735px;
+        margin: auto;
+    }
+}
+@media screen and (min-device-width: 995px) {
+    .tableForExpertName {
+        width: 940px;
+        margin: auto;
+    }
+}

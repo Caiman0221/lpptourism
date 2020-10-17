@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администирования</title>
+    <link rel="stylesheet" href="users.css" type="text/css">
+    <link rel="stylesheet" href="http://lpptourism.ru/style/style.css" type="text/css">
+    <link rel="stylesheet" href="http://lpptourism.ru/private/private.css" type="text/css">
+    <link rel="stylesheet" href="http://lpptourism.ru/private/coordreg.css" type="text/css">
+    <link rel="stylesheet" href="http://lpptourism.ru/account/account.css" type="text/css">
+    <link rel="stylesheet" href="http://lpptourism.ru/account/creative-work/creative-work.css" type="text/css">
+    <link rel="stylesheet" href="./editor.css" type="text/css">
+    <link rel="stylesheet" href="./userslists.css" type="text/css">
+    <link rel="stylesheet" href="./tests.css" type="text/css">
+    <link rel="stylesheet" href="http://lpptourism.ru/account/test/test.css" type="text/css">
+    <script src="./adminscript.js" type="text/javascript"></script>
+    <script src="http://lpptourism.ru/JS/adminzone.js" type="text/javascript"></script>
+    <script src="http://lpptourism.ru/JS/login.js" type="text/javascript"></script>
+    <script src="./users.js" type="text/javascript"></script>
+    <script src="./editor.js" type="text/javascript"></script>
+    <script src="http://lpptourism.ru/JS/DocsLoaders.js" type="text/javascirpt"></script>
+    <script src="./usersLists.js"></script>
+    <script src="./test.js" type="text/javascript"></script>
+    <script src="./newsEditClick.js"></script>
+
+    <!-- Summernote editor-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+    <link rel="stylesheet" href="adminzone.css" type="text/css">
+    <script>
+        TokenCheck('http://lpptourism.ru/core/token.php', 'adminzone/index');
+    </script>
+
+</head>
+
+<body>
+
+    <div class="headerDiv">
+
+    </div>
+
+    <div class="menuNav">
+        <menu id='adminMenuNav'>
+            <div class="adminMenuNavCont1"><button onclick="adminMainPartClick()">Главная страница</button></div>
+            <div class="adminMenuNavCont2"><button onclick="adminNewsClick()">Новости</button></div>
+            <div class="adminMenuNavCont3"><button onclick="adminTestClick()">Тесты</button></div>
+            <div class="adminMenuNavCont4"><button onclick="adminUsersClick()">Пользователи</button></div>
+            <div class="adminMenuNavCont5"><button onclick="adminPageEditorClick()">Редактор страниц</button></div>
+        </menu>
+    </div>
+
+    <div class="mainPartOfAdminPage">
+        <!-- Main Part -->
+        <section id="adminMainPart" class="sectionContainers" style="display: block;">
+            <article>
+                <h3 class="headH">Добро пожаловать в панель администратора</h3>
+            </article>
+            <div class="adminMainPageContent">
+                <div>
+                    <a href="http://lpptourism.ru/files/NormFiles.zip" download="Нормативные документы">Архив нормативных документов</a>
+                </div>
+                <div>
+                    <a href="http://lpptourism.ru/core/adminzone/mainPage/coordExcel.php">Списки координаторов excel</a>
+                </div>
+                <div>
+                    <a href="http://lpptourism.ru/core/adminzone/mainPage/partsExcel.php">Списки участников excel</a>
+                </div>
+                <div>
+                    <button class="redButton" onclick="exitFromAdminPage()">Выход</button>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function exitFromAdminPage() {
+                localStorage.clear();
+                TokenCheck('http://lpptourism.ru/core/token.php', 'adminzone/index');
+            }
+        </script>
+        <!-- news Container -->
+        <section id="adminNewsContainer" class="sectionContainers" style="display: none;">
+            <menu class="hiddenMenuNav">
+                <div class="hiddenMenuNav1"><button onclick="newsAddClick()">Добавление новостей</button></div>
+                <div class="hiddenMenuNav2"><button onclick="newsListClick()">Список новостей</button></div>
+            </menu>
+            <!-- news add-->
+            <div id="newsAddArticle" style="display: none;">
+                <article>
+                    <h2 class="headH">Добавить новость</h2>
+                </article>
+                <div id="newsAddUrl" class="newsContent" style="display: none;">
+                    <div class="newsAddInputArticle">
+                        Ссылка (если пустая, делается автоматически):
+                    </div>
+                    <input type="text" id="newsAddInputUrl">
+                </div>
+                <div id="newsAddName" class="newsContent">
+                    <div class="newsAddInputArticle">
+                        Название:
+                    </div>
+                    <input type="text" id="newsAddInputName" placeholder="Название новости">
+                </div>
+                <div id="newsAddPhoto" class="newsContentFile">
+                    <div class="newsAddInputArticle">
+                        Фото:
+                    </div>
+                    <div onchange="labelChange(event)">
+                        <label for="newsAddInputPhoto" class="editNewsLabel">Загрузите фото для превью новости</label>
+                        <input type="file" id="newsAddInputPhoto" name="NewsNewInput" style="display: none;">
+                    </div>
+                </div>
+                <div id="newsAddDiscription" class="newsContent">
+                    <div class="newsAddInputArticle">
+                        Краткое описание:
+                    </div>
+                    <!-- <input type="text" id="newsAddInputDescription" value="description"> -->
+                    <div id="newsAddInputDescription"></div>
+                </div>
+                <div id="newsAddText" class="newsContent">
+                    <div class="newsAddInputArticle">
+                        Содержание:
+                    </div>
+                    <!-- <input type="text" id="newsAddInputText" value="text"> -->
+                    <div id="newsAddInputText"></div>
+                </div>
+                <div id="newsAddDivErr"></div>
+                <button id="newsPublish" class="greenButton" onclick="newsPublishClick()">Опубликовать</button>
+                <script>
+                    $(document).ready(function() {
+                        $('#newsAddInputDescription').eq(0).summernote({
+                            toolbar: [
+                              ['style', ['bold', 'italic', 'underline', 'clear']],
+                              ['font', ['strikethrough', 'superscript', 'subscript']],
+                              ['fontsize', ['fontsize']],
+                              ['color', ['color']],
+                              ['para', ['ul', 'ol', 'paragraph']],
+                              ['insert', ['link', 'picture', 'video']],
+                              ['fontname', ['fontname']]
+                            ],
+                            fontSizes: ['8', '9','10','11','12','13','14','15','16', '18', '24','36'],
+                            lang: 'ru-RU',
+                            minHeight: 50,
+                            maxHeight: 200,
+                            height: 100, // set editor height
+                            minHeight: null, // set minimum height of editor
+                            maxHeight: null, // set maximum height of editor
+                            focus: true, // set focus to editable area after initializing summernote
+                            disableDragAndDrop: true,
+                            placeholder: 'Описание'
+                        });
+                        $('#newsAddInputText').eq(0).summernote({
+                          toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            ['fontsize', ['fontsize']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['fontname', ['fontname']]
+                          ],
+                          fontSizes: ['8', '9','10','11','12','13','14','15','16', '18', '24','36'],
+                            lang: 'ru-RU',
+                            minHeight: 100,
+                            maxHeight: 300,
+                            height: 200, // set editor height
+                            minHeight: null, // set minimum height of editor
+                            maxHeight: null, // set maximum height of editor
+                            focus: true, // set focus to editable area after initializing summernote
+                            disableDragAndDrop: true,
+                            placeholder: 'Текст'
+                        });
+                    });
+                </script>
+            </div>
+            <!-- news list -->
+            <div id="newsListArticle" style="display: block;">
+                <article>
+                    <h2 class="headH">Список новостей</h2>
+                </article>
+                <div id="errDivForNewsEditor"></div>
+                <!-- news table -->
+                <div class="noMobileDesign">
+                    <div class="newsHiddenInfo newsHiddenInfoDiv1">
+                        <div>Название: </div>
+                        <div>Дата публицакии: </div>
+                    </div>
+                    <div class="newsHiddenInfo newsHiddenInfoDiv2">Описание: </div>
+                    <div class="newsHiddenInfo newsHiddenInfoDiv3">Фото: </div>
+                </div>
+
+                <!-- one news -->
+                <div id="newsListContainer">
+
+                </div>
+            </div>
+        </section>
+
+        <!-- tests Container -->
+        <section id="adminTestsContainer" class="sectionContainers" style="display: none;">
+            <menu class="hiddenMenuNavMB">
+                <div class="hiddenMenuNav1"><button onclick="testNominations()">Список номинаций</button></div>
+                <div><button onclick="testAddClick()">Добавить тест</button></div>
+                <div class="hiddenMenuNav2"><button onclick="testListClick()">Список тестов</button></div>
+            </menu>
+
+            <!-- Список номинаций -->
+            <section id="NominationsContainer" style="display: none;">
+                <!-- Добавление номинации -->
+                <div class="newNominationContainer">
+                    <div>Добавить номинацию:</div>
+                    <div><input type="text" class="newUserCardInput" id="newNomination" placeholder="Введите номинацию"></div>
+                    <div><button class="yellowButton" onclick="newNominationClick()">Добавить</button></div>
+                    <div id="errorNominationsDiv"></div>
+                </div>
+                <!-- Список номинаций -->
+
+                <div id="listOfNominations">
+                    <h2 class="headH">Список номинаций:</h2>
+                    <div id="nominationsContainer">
+                        <div class="nominationsContainer">
+                            <div class="nominationName">
+                                <div>Номинация: Название номинации</div>
+                                <div>Тест: Название теста</div>
+                            </div>
+                            <div class="nominationDellButton">
+                                <button class="yellowButton" id="dellTestFromNomination1" onclick="dellTestFromNominationClick(this)">Открепить тест</button>
+                                <button class="redButton" id="dellNomination1" onclick="dellNominationClick(this)">Удалить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    loadNominationsList()
+                </script>
+            </section>
+            <!-- Добавить тест -->
+            <section id="addNewTestContainer" style="display: none;">
+                <h2 class="headH">Создание нового теста:</h2>
+                <div id="newTestContainer">
+                    <div class="TestsContainer">
+                        <div class="OneTestContainer" onclick="addNewQuestionClick(event);addTestInDBClick(event)">
+                            <div class="OneTestName">
+                                <h2 class="headH">Название теста:</h2>
+                            </div>
+                            <div class="OneTestNameInput">
+                                <input type="number" name="OneTestIDnum" value="" style="display: none;">
+                                <input type="text" name="OneTestName" placeholder="Название теста" onchange='inputCheck(event)'>
+                            </div>
+                            <div>Выберите номинацию (если не выбирать, тест не прикрепится к номинации)</div>
+                            <div>
+                                <select name="Nomination" id="newTestNominationSelect" class="selectorForUsers">
+                                    <option value=''>Выберите номинацию</option>
+                                </select>
+                                <script>
+                                    NominationSelect('newTestNominationSelect')
+                                </script>
+                            </div>
+                            <div class="QuestionsContainer">
+                                <div class="OneQuestionContainer" onclick="DellQuestionClick(event)">
+                                    <div class="QuestionContainer">
+                                        <div class="QuestionContent">
+                                            <div><input type="number" name="QuestionNumber" class="QuestionNumber" style="display: none;" value=""></div>
+                                            <div>Вопрос:</div>
+                                            <div><input type="text" name="Question" class="Questions" placeholder="Вопрос" onchange='inputCheck(event)'></div>
+                                        </div>
+                                        <div class="AnswersContainer" onclick="AddNewAnsewerClick(event)">
+                                            <div class="OneAnswerContainer">
+                                                <div class="AnswerContent" onclick="DellAnswerClick(event)">
+                                                    <span><input type="checkbox" class="AnsewerCheckboxes" name="TrueAnswer"></span>
+                                                    <span><input type="text" name="AnswerInput" class="AnswerInputClass" placeholder="Ответ" onchange='inputCheck(event)'></span>
+                                                    <span><button name="DeleteAnswerButton" class="dellDocButton">X</button></span>
+                                                    <!-- удалить ответ -->
+                                                </div>
+                                                <!-- сюда добавляется новый ответ -->
+                                            </div>
+                                            <div class="addNewAnswerButtonContainer">
+                                                <button name="addNewAnswerClick" class="greenButton">Добавить ответ</button>
+                                                <!-- добавить ответ -->
+                                            </div>
+                                        </div>
+                                        <div class="OtherInfoOfAnswerContainer">
+                                            <span>
+                                                <div>Время на ответ</div>
+                                                <div><input type="number" name="TimeForAnswer" value="40"></div>
+                                            </span>
+                                            <span>
+                                                <div>Баллы за ответ</div>
+                                                <div><input type="number" name="PointsForAnswer" value="1"></div>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="DellQuestionButtonContainer">
+                                        <button name="DellQuestionClick" class="dellDocButton">X</button>
+                                        <!-- удалить вопрос -->
+                                    </div>
+                                </div>
+                                <!-- сюда добавляется новый вопрос -->
+                            </div>
+                            <div class="addNewQuestionButtonContainer">
+                                <button name="addNewQuestionClick" class="greenButton">Добавить вопрос</button>
+                                <!-- добавить вопрос -->
+                            </div>
+                            <div class="errorDivContainer"></div>
+                            <div class="addTestInDB">
+                                <button name="addTestInDBClick" class="yellowButton" id="addNewTestButton">Сохранить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Список тестов -->
+            <section id="listOfTests" style="display: none;">
+                <h2 class="headH">Список тестов</h2>
+                <div id="newTestContainer">
+                    <div class="TestsContainer" id="TestsContainer">
+                        <div class="hiddenListTest" onclick="hiddenListTestClick(this); closeHiddenTest(event)">
+                            <div>
+                                nameOfTest
+                            </div>
+                            <div class="HiddenTest" style="display: none;">
+                                <div class="addTestInDB">
+                                    <button name="closeEditTest" class="yellowButton">Закрыть</button>
+                                </div>
+                                <div class="OneTestContainer" onclick="addNewQuestionClick(event);addTestInDBClick(event)">
+                                    <div class="OneTestName">
+                                        <h2 class="headH">Название теста:</h2>
+                                    </div>
+                                    <div class="OneTestNameInput">
+                                        <input type="number" name="OneTestIDnum" value="" style="display: none;">
+                                        <input type="text" name="OneTestName" placeholder="Название теста">
+                                    </div>
+                                    <div>Выберите номинацию (если не выбирать, тест не прикрепится к номинации)</div>
+                                    <div>
+                                        <select name="Nomination" id="newTestNominationSelect" class="selectorForUsers">
+                                            <option value=''>Выберите номинацию</option>
+                                        </select>
+                                        <script>
+                                            NominationSelect('newTestNominationSelect')
+                                        </script>
+                                    </div>
+                                    <div class="QuestionsContainer">
+                                        <div class="OneQuestionContainer" onclick="DellQuestionClick(event)">
+                                            <div class="QuestionContainer">
+                                                <div class="QuestionContent">
+                                                    <div>Вопрос:</div>
+                                                    <div><input type="text" name="Question" class="Questions" placeholder="Вопрос"></div>
+                                                </div>
+                                                <div class="AnswersContainer" onclick="AddNewAnsewerClick(event)">
+                                                    <div class="OneAnswerContainer">
+                                                        <div class="AnswerContent" onclick="DellAnswerClick(event)">
+                                                            <span><input type="checkbox" class="AnsewerCheckboxes" name="TrueAnswer"></span>
+                                                            <span><input type="text" name="AnswerInput" class="AnswerInputClass" placeholder="Ответ"></span>
+                                                            <span><button name="DeleteAnswerButton" class="dellDocButton">X</button></span>
+                                                            <!-- удалить ответ -->
+                                                        </div>
+                                                        <!-- сюда добавляется новый ответ -->
+                                                    </div>
+                                                    <div class="addNewAnswerButtonContainer">
+                                                        <button name="addNewAnswerClick" class="greenButton">Добавить ответ</button>
+                                                        <!-- добавить ответ -->
+                                                    </div>
+                                                </div>
+                                                <div class="OtherInfoOfAnswerContainer">
+                                                    <span>
+                                                        <div>Время на ответ</div>
+                                                        <div><input type="number" name="TimeForAnswer" value="40"></div>
+                                                    </span>
+                                                    <span>
+                                                        <div>Баллы за ответ</div>
+                                                        <div><input type="number" name="PointsForAnswer" value="1"></div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="DellQuestionButtonContainer">
+                                                <button name="DellQuestionClick" class="dellDocButton">X</button>
+                                                <!-- удалить вопрос -->
+                                            </div>
+                                        </div>
+                                        <!-- сюда добавляется новый вопрос -->
+                                    </div>
+                                    <div class="addNewQuestionButtonContainer">
+                                        <button name="addNewQuestionClick" class="greenButton">Добавить вопрос</button>
+                                        <!-- добавить вопрос -->
+                                    </div>
+                                    <div class="addTestInDB">
+                                        <button name="addTestInDBClick" class="yellowButton">Сохранить</button>
+                                    </div>
+                                    <div class="addTestInDB">
+                                        <button name="closeEditTest" class="yellowButton">Закрыть</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    listTestLoader();
+                </script>
+            </section>
+        </section>
+
+        <!-- users Container -->
+        <section id="adminUsersContainer" class="sectionContainers" style="display: none;">
+            <menu id="usersMenu" class="hiddenMenuNavMB">
+                <div class="hiddenMenuNavMB1">
+                    <button onclick="allUsersListClick()">Создать нового пользователя</button>
+                </div>
+                <div>
+                    <button onclick="adminListClick()">Администраторы</button>
+                </div>
+                <div>
+                    <button onclick="coordsListClick()">Координаторы</button>
+                </div>
+                <div>
+                    <button onclick="partsListClick()">Участники</button>
+                </div>
+                <div class="hiddenMenuNavMB2">
+                    <button onclick="expertsListClick()">Эксперты</button>
+                </div>
+            </menu>
+            <article>
+                <h3 class="headH">Пользователи</h3>
+            </article>
+            <section id="allUsersList" style="display: block;">
+                <article>
+                    <h3 class="headH">Создать нового пользователя</h3>
+                </article>
+                <div>
+                    Тип пользователя:
+                    <select name="" id="newUserFromAdminZone" onchange="newUserOptionClick(this)">
+                        <option value="0">Выберите тип пользователя</option>
+                        <option value="1">Администратор</option>
+                        <option value="2">Координатор</option>
+                        <option value="3">Участник</option>
+                        <option value="4">Эксперт</option>
+                    </select>
+                </div>
+
+                <div id="newAdminCreate" style="display: none;">
+                    Создаем нового администртора
+                    <div class="newUserCard">
+                        <div>
+                            <div class="newUserCardText">Email:</div>
+                            <input class="newUserCardInput" type="email" id="newAdminEmail" placeholder="Email">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Пароль (Если не ввести, то сгенерируется автоматически. Пароль появится под формой регистрации):</div>
+                            <input class="newUserCardInput" type="text" id="newAdminPassword" placeholder="Пароль">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Имя:</div>
+                            <input class="newUserCardInput" type="text" id="newAdminName" placeholder="Имя">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Фамилия:</div>
+                            <input class="newUserCardInput" type="text" id="newAdminLastName" placeholder="Фамилия">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Контактный телефон:</div>
+                            <input class="newUserCardInput" type="tel" id="newAdminPhone" placeholder="Телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Активен ли пользователь:
+                                <span><input type="checkbox" class="checkbox" id="newAdminCheckbox"></span>
+                            </div>
+                        </div>
+                        <div id=newAdminSubmitErr></div>
+                        <button onclick="newAdminSubmitClick()">Создать</button>
+                    </div>
+                    <script>
+                    </script>
+                </div>
+                <div id="newCoordCreate" style="display: none;">
+                    Создаем нового координатора
+                    <div class="newUserCard">
+                        <div>
+                            <div class="newUserCardText">Email:</div>
+                            <input class="newUserCardInput" type="email" id="newCoordEmail" placeholder="Email">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Пароль (Если не ввести, то сгенерируется автоматически. Пароль появится под формой регистрации):</div>
+                            <input class="newUserCardInput" type="text" id="newCoordPassword" placeholder="Пароль">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Имя:</div>
+                            <input class="newUserCardInput" type="text" id="newCoordName" placeholder="Имя">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Фамилия:</div>
+                            <input class="newUserCardInput" type="text" id="newCoordLastName" placeholder="Фамилия">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Мобильный телефон:</div>
+                            <input class="newUserCardInput" type="tel" id="newCoordMobilePhone" placeholder="Мобильный телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Рабочий телефон:</div>
+                            <input class="newUserCardInput" type="email" id="newCoordWorkPhone" placeholder="Рабочий телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Название субьекта РФ:</div>
+                            <select name="" id="newCoordSubjectName" class="selectorForUsers">
+                                <!-- <option value="">Выберите имя координатора</option> -->
+                            </select>
+                        </div>
+                        <script>
+                            fetch('http://lpptourism.ru/core/adminzone/listOfSubjects.php')
+                                .then(response => response.json())
+                                .then(result => {
+                                    let subList = '<option value="">Выберите название субьекта</option>';
+                                    let i = 0;
+                                    while (i < result.length) {
+                                        subList = subList + "<option value='" + (i + 1) + "'>" + result[i] + "</option>";
+                                        i = i + 1;
+                                    }
+                                    document.getElementById('newCoordSubjectName').innerHTML = subList;
+                                })
+                                .catch(err => console.log(err));
+                        </script>
+                        <div>
+                            <div class="newUserCardText">Активен ли пользователь:
+                                <span><input type="checkbox" class="checkbox" id="newCoordCheckbox"></span>
+                            </div>
+                        </div>
+                        <div id=newCoordSubmitErr></div>
+                        <button onclick="newCoordSubmitClick()">Создать</button>
+                    </div>
+                    <script>
+                    </script>
+                </div>
+                <div id="newPartCreate" style="display: none;">
+                    Создаем нового участника
+                    <div class="newUserCard">
+                        <div>
+                            <div class="newUserCardText">Электронная почта *:</div>
+                            <input class="newUserCardInput" type="email" id="newPartEmail" placeholder="Email">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Пароль *:</div>
+                            <input class="newUserCardInput" type="text" id="newPartPassword" placeholder="Пароль">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Имя *:</div>
+                            <input class="newUserCardInput" type="text" id="newPartName" placeholder="Имя">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Фамилия *:</div>
+                            <input class="newUserCardInput" type="text" id="newPartLastName" placeholder="Фамилия">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Отчество *:</div>
+                            <input class="newUserCardInput" type="text" id="newPartThirdName" placeholder="Отчество">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Мобильный телефон *:</div>
+                            <input class="newUserCardInput" type="tel" id="newPartMobilePhone" placeholder="Мобильный телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Рабочий телефон *:</div>
+                            <input class="newUserCardInput" type="tel" id="newPartWorkPhone" placeholder="Рабочий телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Номинация / подноминация *:</div>
+                            <select name="" id="newPartNomination">
+                                <option value="">Выберите номинацию</option>
+                                <option value="1">Матеша</option>
+                            </select>
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Паспортные данные (серия, номер, кем и когда выдан):</div>
+                            <input class="newUserCardInput" type="text" id="newPartPass" placeholder="Паспортные данные">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Место работы и должность (при наличии):</div>
+                            <input class="newUserCardInput" type="text" id="newPartWorkPlace" placeholder="Место работы">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Стаж работы в сфере туризма *:</div>
+                            <input class="newUserCardInput" type="text" id="newPartWorkExperience" placeholder="Стаж работы">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Образование и специальность по диплому:</div>
+                            <input class="newUserCardInput" type="text" id="newPartEducation" placeholder="Образование">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Наименование учебного заведения (при наличии нескольких указывать все):</div>
+                            <input class="newUserCardInput" type="text" id="newPartNameEducation" placeholder="Учебное заведение">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Повышение квалификации (при наличии) (дата, уч. заведение и тема):</div>
+                            <input class="newUserCardInput" type="text" id="newPartTraining" placeholder="Повышение квалификации">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Индекс места жительства:</div>
+                            <input class="newUserCardInput" type="text" id="newPartAdressIndex" placeholder="Индекс">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Адрес места жительства *:</div>
+                            <input class="newUserCardInput" type="text" id="newPartHomeAdress" placeholder="Адрес">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Телефон и факс работодателя (при наличии):</div>
+                            <input class="newUserCardInput" type="text" id="newPartEmployerPhone" placeholder="Телефон работодателя">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Рабочий адрес электронной почты:</div>
+                            <input class="newUserCardInput" type="text" id="newPartWorkEmail" placeholder="Рабочий email">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Имя координатора *:</div>
+                            <select name="" id="newPartNameCoord">
+                                <!-- <option value="">Выберите имя координатора</option> -->
+                            </select>
+                            <script>
+                                function newPartNominationSelectorLoader() {
+                                    fetch('http://lpptourism.ru/core/adminzone/usersLists/parts/newPartNominationSelector.php')
+                                        .then(response => response.text())
+                                        .then(result => document.getElementById('newPartNomination').innerHTML = result)
+                                        .catch(error => console.log(error))
+                                }
+
+                                function newPartNameCoord() {
+                                    fetch('http://lpptourism.ru/core/adminzone/coordsSelector.php')
+                                        .then(response => response.text())
+                                        .then(res => {
+                                            document.getElementById('newPartNameCoord').innerHTML = res;
+                                        })
+                                        .catch(err => console.log(err));
+                                }
+                                newPartNominationSelectorLoader();
+                                newPartNameCoord();
+                            </script>
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Активен ли пользователь:
+                                <span><input type="checkbox" class="checkbox" id="newPartCheckbox"></span>
+                            </div>
+                        </div>
+                        <div id=newPartSubmitErr></div>
+                        <button onclick="newPartSubmitClick()">Создать</button>
+                    </div>
+                    <script>
+                    </script>
+                </div>
+                <div id="newExpertCreate" style="display: none;">
+                    Создаем нового эксперта
+                    <div class="newUserCard">
+                        <div>
+                            <div class="newUserCardText">Email:</div>
+                            <input class="newUserCardInput" type="email" id="newExperEmail" placeholder="Email">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Пароль:</div>
+                            <input class="newUserCardInput" type="text" id="newExpertPassword" placeholder="Пароль">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Имя:</div>
+                            <input class="newUserCardInput" type="text" id="newExpertName" placeholder="Имя">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Фамилия:</div>
+                            <input class="newUserCardInput" type="text" id="newExpertLastName" placeholder="Фамилия">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Мобильный телефон:</div>
+                            <input class="newUserCardInput" type="tel" id="newExpertMobilePhone" placeholder="Мобильный телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Рабочий телефон:</div>
+                            <input class="newUserCardInput" type="tel" id="newExpertWorkPhone" placeholder="Рабочий телефон">
+                        </div>
+                        <div>
+                            <div class="newUserCardText">Активен ли пользователь:
+                                <span><input type="checkbox" class="checkbox" id="newExpertCheckbox"></span>
+                            </div>
+                        </div>
+                        <div id=newExpertSubmitErr></div>
+                        <button onclick="newExpertSubmitClick()">Создать</button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Списки пользователей -->
+            <section id="adminsList" style="display: none;">
+                <h3 class="headH">Список администраторов</h3>
+                <!-- Верхнее меню для админов -->
+                <menu class="usersSearchMenu">
+                    <div class="usersUpperMenuInline usersUpperMenuLeft">
+                        <div>
+                            Сортировать:
+                        </div>
+                        <div>
+                            <select name="" id="adminSortSelect" onchange="adminListMenu()" class="selectorForUsers">
+                                <option value="1">по алфавиту (А-Я)</option>
+                                <option value="2">по алфавиту (Я-А)</option>
+                                <option value="3">по дате регистрации (от самой ранней)</option>
+                                <option value="4" selected>по дате регистрации (от самой поздней)</option>
+                                <option value="5">показать деактивированных</option>
+                                <option value="6">показать активированных</option>
+                            </select>
+                        </div>
+                        <div>
+                            Поиск по администраторам
+                        </div>
+                        <div>
+                            <input type="text" id="adminSearchInput" onchange="adminListMenu()" class="newUserCardInput" placeholder="Поиск">
+                        </div>
+                        <div>
+                            Показать по:
+                            <select name="" id="adminListNum" onchange="adminListNumPages()" class="littleSelect">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="all">Всех</option>
+                            </select>
+                        </div>
+                        <div>
+                            Пользователи:
+                            <select name="" id="adminNumOfPages" onchange="adminListMenu()" class="littleSelect">
+                                <option value="0,25">1-25</option>
+
+                            </select>
+                            <script>
+                                adminListNumPages();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="usersUpperMenuInline usersUpperMenuRight">
+                        <div><button class="yellowButton" onclick="adminsListAddAll(this)">Выбрать всех</button></div>
+                        <div><button class="yellowButton" onclick="adminsListActivChecked()">Активировать выбранных</button></div>
+                        <div><button class="yellowButton" onclick="adminsListDisableChecked()">Деактивировать выбранных</button></div>
+                        <div><button class="redButton" onclick="adminsListDelete()">Удалить выбранных</button></div>
+
+                        <div id="adminLiastConfirmDelete" style="display: none;">
+                            Подтвердите ваше действие:
+                            <div><button class="greenButton" onclick="adminsListNoDeleteButton()">Отменить</button></div>
+                            <div><button class="redButton" onclick="adminsListDeleteButton()">Удалить</button></div>
+                        </div>
+                        <div id="adminListDivResults"></div>
+                    </div>
+                </menu>
+                <!-- Контейнер для админов -->
+                <div id="loaderForAdmins" class="loaderForUsers">
+                    <section class="oneEditedUser">
+                        <div class="visiblePartOfEdit">
+                            <div class="visiblePartOfEditLeft">
+                                <input type="checkbox" name="AdminEditorCheck" id="AdminEditorCheck1">
+                            </div>
+                            <div class="visiblePartOfEditRight" id="visibleAdminPart1" onclick="showHiddenButtonsAdmin(this)">
+                                <div>Name</div>
+                                <div>LastName</div>
+                                <div>MobilePhone</div>
+                                <div style="color: green;">activ</div>
+                                <div style="color: red;">disabled</div>
+                            </div>
+                        </div>
+                        <div id="hiddenAdminButtonPart1" class="hiddenPartOfButtons" style="display: none;">
+                            <div><button id="closeEditorAdminButton1" class="hiddenUsersButton" onclick="closeEditorAdminButtonsClick(this)">Закрыть</button></div>
+                            <div><button id="infoEditorAdminButton1" class="hiddenUsersButton" onclick="infoEditorAdminButtonsClick(this)">Информация</button></div>
+                            <div><button id="editEditorAdminButton1" class="hiddenUsersButton" onclick="EditEditorAdminButtonsClick(this)">Редактировать</button></div>
+                        </div>
+                        <div id="infoAdminEditorPage1" class="hiddenEditorAdminsFullInfo" style="display: none;">
+                            <div>Email: </div>
+                            <div>Имя: </div>
+                            <div>Фамилия: </div>
+                            <div>Телефон: </div>
+                            <div>Дата регистрации: </div>
+                            <div>Пользователь: активен</div>
+                        </div>
+                        <div id="editAdminEditorPage1" class="hiddenEditorAdminInputs" style="display: none;">
+                            <div class="newUserCard">
+                                <div>
+                                    <div class="newUserCardText">Email:</div>
+                                    <input class="newUserCardInput" type="email" id="editAdminEmail1" placeholder="Email">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Пароль (не изменится, если поле пустое):</div>
+                                    <input class="newUserCardInput" type="text" id="editAdminPassword1" placeholder="Пароль">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Имя:</div>
+                                    <input class="newUserCardInput" type="text" id="editAdminName1" placeholder="Имя">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Фамилия:</div>
+                                    <input class="newUserCardInput" type="text" id="editAdminLast1" placeholder="Фамилия">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Контактный телефон:</div>
+                                    <input class="newUserCardInput" type="tel" id="editAdminPhone1" placeholder="Телефон">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Активен ли пользователь:
+                                        <span><input type="checkbox" class="checkbox" id="editAdminCheckbox1"></span>
+                                    </div>
+                                </div>
+                                <div id=newAdminSubmitErr></div>
+                                <button onclick="editAdminSubmitClick()">Сохранить</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <script>
+                    adminListMenu();
+                </script>
+
+            </section>
+
+            <!-- Список координаторов -->
+            <section id="coordsList" style="display: none;">
+                <h3 class="headH">Список координаторов</h3>
+                <!-- Верхнее меню для координаторов -->
+                <menu class="usersSearchMenu">
+                    <div class="usersUpperMenuInline usersUpperMenuLeft">
+                        <div>
+                            Сортировать:
+                        </div>
+                        <div>
+                            <select name="" id="coordSortSelect" onchange="CoordListMenu()" class="selectorForUsers">
+                                <option value="1">по алфавиту (А-Я)</option>
+                                <option value="2">по алфавиту (Я-А)</option>
+                                <option value="3">по дате регистрации (от самой ранней)</option>
+                                <option value="4" selected>по дате регистрации (от самой поздней)</option>
+                                <option value="5">показать деактивированных</option>
+                                <option value="6">показать активированных</option>
+                            </select>
+                        </div>
+                        <div>
+                            Поиск по координаторам
+                        </div>
+                        <div>
+                            <input type="text" id="coordSearchInput" onchange="CoordListMenu()" class="newUserCardInput" placeholder="Поиск">
+                        </div>
+                        <div>
+                            Показать по:
+                            <select name="" id="coordListNum" onchange="coordListNumPages()" class="littleSelect">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="all">Всех</option>
+                            </select>
+                        </div>
+                        <div>
+                            Пользователи:
+                            <select name="" id="coordNumOfPages" onchange="CoordListMenu()" class="littleSelect">
+                                <option value="0,25">1-25</option>
+
+                            </select>
+                            <script>
+                                coordListNumPages();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="usersUpperMenuInline usersUpperMenuRight">
+                        <div><button class="yellowButton" onclick="coordsListAddAll(this)">Выбрать всех</button></div>
+                        <div><button class="yellowButton" onclick="coordsListActivChecked()">Активировать выбранных</button></div>
+                        <div><button class="yellowButton" onclick="coordsListDisableChecked()">Деактивировать выбранных</button></div>
+                        <div><button class="redButton" onclick="coordsListDelete()">Удалить выбранных</button></div>
+
+                        <div id="coordLiastConfirmDelete" style="display: none;">
+                            Подтвердите ваше действие:
+                            <div><button class="greenButton" onclick="coordsListNoDeleteButton()">Отменить</button></div>
+                            <div><button class="redButton" onclick="coordsListDeleteButton()">Удалить</button></div>
+                        </div>
+                        <div id="coordListDivResults"></div>
+                    </div>
+                </menu>
+                <!-- Контейнер для координаторов -->
+                <div id="loaderForCoords" class="loaderForUsers">
+                    <section class="oneEditedUser">
+                        <div class="visiblePartOfEdit">
+                            <div class="visiblePartOfEditLeft">
+                                <input type="checkbox" name="CoordEditorCheck" id="CoordEditorCheck1">
+                            </div>
+                            <div class="visiblePartOfEditRight" id="visibleCoordPart1" onclick="showHiddenButtonsCoord(this)">
+                                <div>Name</div>
+                                <div>LastName</div>
+                                <div>MobilePhone</div>
+                                <div style="color: green;">activ</div>
+                                <div style="color: red;">disabled</div>
+                            </div>
+                        </div>
+                        <div id="hiddenCoordButtonPart1" class="hiddenPartOfButtons" style="display: none;">
+                            <div><button id="closeEditorCoordButton1" class="hiddenUsersButton" onclick="closeEditorCoordButtonsClick(this)">Закрыть</button></div>
+                            <div><button id="infoEditorCoordButton1" class="hiddenUsersButton" onclick="infoEditorCoordButtonsClick(this)">Информация</button></div>
+                            <div><button id="editEditorCoordButton1" class="hiddenUsersButton" onclick="EditEditorCoordButtonsClick(this)">Редактировать</button></div>
+                        </div>
+                        <div id="infoCoordEditorPage1" class="hiddenEditorAdminsFullInfo" style="display: none;">
+                            <div>Email: </div>
+                            <div>Имя: </div>
+                            <div>Фамилия: </div>
+                            <div>Телефон: </div>
+                            <div>Дата регистрации: </div>
+                            <div>Пользователь: активен</div>
+                        </div>
+                        <div id="editCoordEditorPage1" class="hiddenEditorAdminInputs" style="display: none;">
+                            <div class="newUserCard">
+                                <div>
+                                    <div class="newUserCardText">Email:</div>
+                                    <input class="newUserCardInput" type="email" id="editCoordEmail1" placeholder="Email">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Пароль (не изменится, если поле пустое):</div>
+                                    <input class="newUserCardInput" type="text" id="editCoordPassword1" placeholder="Пароль">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Имя:</div>
+                                    <input class="newUserCardInput" type="text" id="editCoordName1" placeholder="Имя">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Фамилия:</div>
+                                    <input class="newUserCardInput" type="text" id="editCoordLast1" placeholder="Фамилия">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Контактный телефон:</div>
+                                    <input class="newUserCardInput" type="tel" id="editCoordPhone1" placeholder="Телефон">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Активен ли пользователь:
+                                        <span><input type="checkbox" class="checkbox" id="editCoordCheckbox1"></span>
+                                    </div>
+                                </div>
+                                <div id=newCoordSubmitErr></div>
+                                <button onclick="editCoordSubmitClick()">Сохранить</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <script>
+                    CoordListMenu();
+                </script>
+            </section>
+
+
+            <!-- список участников -->
+            <section id="partsList" style="display: none;">
+                <h3 class="headH">Список участников</h3>
+                <!-- Верхнее меню для экспертов -->
+                <menu class="usersSearchMenu">
+                    <div class="usersUpperMenuInline usersUpperMenuLeft">
+                        <div>
+                            Сортировать:
+                        </div>
+                        <div>
+                            <select name="" id="partSortSelect" onchange="PartListMenu()" class="selectorForUsers">
+                                <option value="1">по алфавиту (А-Я)</option>
+                                <option value="2">по алфавиту (Я-А)</option>
+                                <option value="3">по дате регистрации (от самой ранней)</option>
+                                <option value="4" selected>по дате регистрации (от самой поздней)</option>
+                                <option value="5">показать деактивированных</option>
+                                <option value="6">показать активированных</option>
+                            </select>
+                        </div>
+                        <div>
+                            Поиск по участникам
+                        </div>
+                        <div>
+                            <input type="text" id="partSearchInput" onchange="PartListMenu()" class="newUserCardInput" placeholder="Поиск">
+                        </div>
+                        <div>
+                            Показать по:
+                            <select name="" id="partListNum" onchange="partListNumPages()" class="littleSelect">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="all">Всех</option>
+                            </select>
+                        </div>
+                        <div>
+                            Пользователи:
+                            <select name="" id="partNumOfPages" onchange="PartListMenu()" class="littleSelect">
+                                <option value="0,25">1-25</option>
+
+                            </select>
+                            <script>
+                                partListNumPages();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="usersUpperMenuInline usersUpperMenuRight">
+                        <div><button class="yellowButton" onclick="partsListAddAll(this)">Выбрать всех</button></div>
+                        <div><button class="yellowButton" onclick="partsListActivChecked()">Активировать выбранных</button></div>
+                        <div><button class="yellowButton" onclick="partsListDisableChecked()">Деактивировать выбранных</button></div>
+                        <div><button class="redButton" onclick="partsListDelete()">Удалить выбранных</button></div>
+
+                        <div id="partLiastConfirmDelete" style="display: none;">
+                            Подтвердите ваше действие:
+                            <div><button class="greenButton" onclick="partsListNoDeleteButton()">Отменить</button></div>
+                            <div><button class="redButton" onclick="partsListDeleteButton()">Удалить</button></div>
+                        </div>
+                        <div id="partListDivResults"></div>
+                    </div>
+                </menu>
+                <!-- Контейнер для участников -->
+                <div id="loaderForParts" class="loaderForUsers">
+                    <section class="oneEditedUser">
+                        <div class="visiblePartOfEdit">
+                            <div class="visiblePartOfEditLeft">
+                                <input type="checkbox" name="PartEditorCheck" id="PartEditorCheck1">
+                            </div>
+                            <div class="visiblePartOfEditRight" id="visiblePartPart1" onclick="showHiddenButtonsPart(this)">
+                                <div>Name</div>
+                                <div>LastName</div>
+                                <div>MobilePhone</div>
+                                <div style="color: green;">activ</div>
+                                <div style="color: red;">disabled</div>
+                            </div>
+                        </div>
+                        <div id="hiddenPartButtonPart1" class="hiddenPartOfButtons" style="display: none;">
+                            <div><button id="closeEditorPartButton1" class="hiddenUsersButton" onclick="closeEditorPartButtonsClick(this)">Закрыть</button></div>
+                            <div><button id="infoEditorPartButton1" class="hiddenUsersButton" onclick="infoEditorPartButtonsClick(this)">Информация</button></div>
+                            <div><button id="editEditorPartButton1" class="hiddenUsersButton" onclick="EditEditorPartButtonsClick(this)">Редактировать</button></div>
+                        </div>
+                        <div id="infoPartEditorPage1" class="hiddenEditorAdminsFullInfo" style="display: none;">
+                            <div>Email: </div>
+                            <div>Имя: </div>
+                            <div>Фамилия: </div>
+                            <div>Телефон: </div>
+                            <div>Дата регистрации: </div>
+                            <div>Пользователь: активен</div>
+                        </div>
+                        <div id="editPartEditorPage1" class="hiddenEditorAdminInputs" style="display: none;">
+                            <div class="newUserCard">
+                                <div>
+                                    <div class="newUserCardText">Email:</div>
+                                    <input class="newUserCardInput" type="email" id="editPartEmail1" placeholder="Email">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Пароль (не изменится, если поле пустое):</div>
+                                    <input class="newUserCardInput" type="text" id="editPartPassword1" placeholder="Пароль">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Имя:</div>
+                                    <input class="newUserCardInput" type="text" id="editPartName1" placeholder="Имя">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Фамилия:</div>
+                                    <input class="newUserCardInput" type="text" id="editPartLast1" placeholder="Фамилия">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Контактный телефон:</div>
+                                    <input class="newUserCardInput" type="tel" id="editPartPhone1" placeholder="Телефон">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Активен ли пользователь:
+                                        <span><input type="checkbox" class="checkbox" id="editPartCheckbox1"></span>
+                                    </div>
+                                </div>
+                                <div id=newPartSubmitErr></div>
+                                <button onclick="editPartSubmitClick()">Сохранить</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <script>
+                    PartListMenu();
+                </script>
+            </section>
+
+
+            <!-- список экспертов -->
+            <section id="expertsList" style="display: none;">
+                <h3 class="headH">Список экспертов</h3>
+                <!-- Верхнее меню для экспертов -->
+                <menu class="usersSearchMenu">
+                    <div class="usersUpperMenuInline usersUpperMenuLeft">
+                        <div>
+                            Сортировать:
+                        </div>
+                        <div>
+                            <select name="" id="expertSortSelect" onchange="ExpertListMenu()" class="selectorForUsers">
+                                <option value="1">по алфавиту (А-Я)</option>
+                                <option value="2">по алфавиту (Я-А)</option>
+                                <option value="3">по дате регистрации (от самой ранней)</option>
+                                <option value="4" selected>по дате регистрации (от самой поздней)</option>
+                                <option value="5">показать деактивированных</option>
+                                <option value="6">показать активированных</option>
+                            </select>
+                        </div>
+                        <div>
+                            Поиск по координаторам
+                        </div>
+                        <div>
+                            <input type="text" id="expertSearchInput" onchange="ExpertListMenu()" class="newUserCardInput" placeholder="Поиск">
+                        </div>
+                        <div>
+                            Показать по:
+                            <select name="" id="expertListNum" onchange="expertListNumPages()" class="littleSelect">
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="all">Всех</option>
+                            </select>
+                        </div>
+                        <div>
+                            Пользователи:
+                            <select name="" id="expertNumOfPages" onchange="ExpertListMenu()" class="littleSelect">
+                                <option value="0,25">1-25</option>
+
+                            </select>
+                            <script>
+                                expertListNumPages();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="usersUpperMenuInline usersUpperMenuRight">
+                        <div><button class="yellowButton" onclick="expertsListAddAll(this)">Выбрать всех</button></div>
+                        <div><button class="yellowButton" onclick="expertsListActivChecked()">Активировать выбранных</button></div>
+                        <div><button class="yellowButton" onclick="expertsListDisableChecked()">Деактивировать выбранных</button></div>
+                        <div><button class="redButton" onclick="expertsListDelete()">Удалить выбранных</button></div>
+
+                        <div id="expertLiastConfirmDelete" style="display: none;">
+                            Подтвердите ваше действие:
+                            <div><button class="greenButton" onclick="expertsListNoDeleteButton()">Отменить</button></div>
+                            <div><button class="redButton" onclick="expertsListDeleteButton()">Удалить</button></div>
+                        </div>
+                        <div id="expertListDivResults"></div>
+                    </div>
+                </menu>
+                <!-- Контейнер для координаторов -->
+                <div id="loaderForExperts" class="loaderForUsers">
+                    <section class="oneEditedUser">
+                        <div class="visiblePartOfEdit">
+                            <div class="visiblePartOfEditLeft">
+                                <input type="checkbox" name="ExpertEditorCheck" id="ExpertEditorCheck1">
+                            </div>
+                            <div class="visiblePartOfEditRight" id="visibleExpertPart1" onclick="showHiddenButtonsExpert(this)">
+                                <div>Name</div>
+                                <div>LastName</div>
+                                <div>MobilePhone</div>
+                                <div style="color: green;">activ</div>
+                                <div style="color: red;">disabled</div>
+                            </div>
+                        </div>
+                        <div id="hiddenExpertButtonPart1" class="hiddenPartOfButtons" style="display: none;">
+                            <div><button id="closeEditorExpertButton1" class="hiddenUsersButton" onclick="closeEditorExpertButtonsClick(this)">Закрыть</button></div>
+                            <div><button id="infoEditorExpertButton1" class="hiddenUsersButton" onclick="infoEditorExpertButtonsClick(this)">Информация</button></div>
+                            <div><button id="editEditorExpertButton1" class="hiddenUsersButton" onclick="EditEditorExpertButtonsClick(this)">Редактировать</button></div>
+                        </div>
+                        <div id="infoExpertEditorPage1" class="hiddenEditorAdminsFullInfo" style="display: none;">
+                            <div>Email: </div>
+                            <div>Имя: </div>
+                            <div>Фамилия: </div>
+                            <div>Телефон: </div>
+                            <div>Дата регистрации: </div>
+                            <div>Пользователь: активен</div>
+                        </div>
+                        <div id="editExpertEditorPage1" class="hiddenEditorAdminInputs" style="display: none;">
+                            <div class="newUserCard">
+                                <div>
+                                    <div class="newUserCardText">Email:</div>
+                                    <input class="newUserCardInput" type="email" id="editExpertEmail1" placeholder="Email">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Пароль (не изменится, если поле пустое):</div>
+                                    <input class="newUserCardInput" type="text" id="editExpertPassword1" placeholder="Пароль">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Имя:</div>
+                                    <input class="newUserCardInput" type="text" id="editExpertName1" placeholder="Имя">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Фамилия:</div>
+                                    <input class="newUserCardInput" type="text" id="editExpertLast1" placeholder="Фамилия">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Контактный телефон:</div>
+                                    <input class="newUserCardInput" type="tel" id="editExpertPhone1" placeholder="Телефон">
+                                </div>
+                                <div>
+                                    <div class="newUserCardText">Активен ли пользователь:
+                                        <span><input type="checkbox" class="checkbox" id="editExpertCheckbox1"></span>
+                                    </div>
+                                </div>
+                                <div id=newExpertSubmitErr></div>
+                                <button onclick="editExpertSubmitClick()">Сохранить</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <script>
+                    ExpertListMenu();
+                </script>
+            </section>
+
+        </section>
+
+        <!-- page editor-->
+        <section id="adminPageEditor" class="sectionContainers" style="display: none;">
+            <article>
+                <h3 class="headH">Редактор страниц (все редактируемые элементы помечены зеленым)</h3>
+            </article>
+            <div class="pageEditorMenu">
+                <div class="pageEditorMenuInline pageEditorMenuInlineSelect">
+                    <div>
+                        Выберите страницу для редактирования:
+                    </div>
+                    <div>
+                        <select name="" id="adminPageEditorSelectPage" onchange="adminPageEditorOptionClick(this)">
+                            <option value="1">Главая страница</option>
+                            <option value="2">Страница входа в аккаунт</option>
+                            <option value="3">Страница координатора</option>
+                            <option value="4">Стартовая страница теста</option>
+                            <option value="5">Страница загрузки творческой работы</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pageEditorMenuInline pageEditorMenuInlineButton">
+                    <button onclick="savePageEditorClick()" class="submitUserEditing">Сохранить изменения</button>
+                </div>
+                <div id="errDivClickForEditorPages" style="color: green; font-size: 16px;"></div>
+            </div>
+            <!-- тут хидер -->
+            <section id="editorAllUserHeader">
+                <div id="headerDiv">
+                    <header class="informationContainer">
+                        <div class="inlineContainer logoContainer">
+                            <!--EDITED-->
+                            <label for="editorNewLppLogo" onchange="imgToLabelsLChange(event)">
+                                <!--<img src="http://lpptourism.ru/files/logos/lpit_logo copy.jpg" class="editorImg" id="headerLogoImg">-->
+                                <img src="" class="editorImg" id="headerLogoImg">
+                                <input type="file" id="editorNewLppLogo" style="display: none;">
+                            </label>
+                        </div>
+                        <div class="inlineContainer aboutInfo">
+                            <!--EDITED-->
+                            <h2 class="headH"><input type="text" class="editorInput" id="editorAboutInfoH2" value="Всероссийский конкурс профессионального мастерства работников сферы туризма"></h2>
+                            <!--EDITED-->
+                            <h1 class="headH"><input type="text" class="editorInput" id="editorAboutInfoH1" value="ЛУЧШИЙ ПО ПРОФЕССИИ В ИНДУСТРИИ ТУРИЗМА"></h1>
+                        </div>
+                        <div class="inlineContainer contacts">
+                            <div class="contactsContainer">
+                                <div>
+                                    Оргкомитет:<br>
+                                    <!--EDITED-->
+                                    <input type="text" class="editorInput" id="editorAboutInfoPhone" value="8 800 700 37 26"><br>
+                                    <!--EDITED-->
+                                    <input type="text" class="editorInput" id="editorAboutInfoEmail" value="lpptourism@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inlineContainer tourismLogo">
+                            <!--EDITED-->
+                            <label for="editorPartnerLogo" onchange="imgToLabelsLChange(event)">
+                                <!-- <img src="http://lpptourism.ru/files/logos/partner.svg" class="editorImg" id="headerPartnerImg"> -->
+                                <img src="" class="editorImg" id="headerPartnerImg">
+                                <input type="file" id="editorPartnerLogo" style="display: none;">
+                            </label>
+
+                        </div>
+                    </header>
+                </div>
+            </section>
+
+            <!-- тут контейнер для редактируемых страниц-->
+            <section id="editorMainPage" class="editorSectionsContent" style="display: block;">
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton">
+                        <a>Главная</a>
+                    </div>
+                    <div class="menuButtons emptyMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Войти в личный кабинет</a>
+                    </div>
+                </menu>
+                <main class="mainContainer">
+                    <div class="inlineMainClass mainDocumentsContainerPhone" id="mainDocumentsContainerIdPhone">
+                        Тут редактируем список документов
+                    </div>
+                    <div class="inlineMainClass mainInfoContainer" id="mainInfoContainerId">
+                        <section class="partWithNews mainPageSectionWithNews">
+                            <div>
+                                <a>
+                                    <h2 class="headH">Название новости</h2>
+                                </a>
+                            </div>
+                            <div><img src="http://lpptourism.ru/news/Редактор.jpg" alt="" class="pageEditorImg"></div>
+                            <div>Описание новости</div>
+                        </section>
+                    </div>
+                    <div class="inlineMainClass mainDocumentsContainerPC editorColor" id="mainDocumentsContainerIdPC">
+                        <h2 class="headH">Документы конкурса</h2>
+                        <div id="LoaderDocsMainPage" class="marginTop linksMargin">
+                            <a href=""></a><button value="" class="dellDocButton" onclick="dellDocsMainPage(this)">X</button>
+                        </div>
+                        <script>
+                            let LoaderDocsMainPage = function(page) {
+                                fetch('http://lpptourism.ru/core/adminzone/files/listOfFilesMainPage.php')
+                                    .then(response => response.json())
+                                    .then(res => {
+                                        let i = 0;
+                                        let links = res['links'];
+                                        let names = res['names'];
+                                        let html = '';
+                                        while (i < links.length) {
+                                            if (page == 'admin') {
+                                                html = html + "<div><a href='" + links[i] + "'>" + names[i] + "</a><button value='" + links[i] + "' class='dellDocButton' onclick='dellDocsMainPage(this)'>X</button></div>"
+                                            } else {
+                                                html = html + "<div><a href='" + links[i] + "'>" + names[i] + "</a></div>"
+                                            }
+                                            i++;
+                                        }
+                                        document.getElementById('LoaderDocsMainPage').innerHTML = html;
+                                    })
+                            }
+                            LoaderDocsMainPage('admin');
+
+                            function dellDocsMainPage(a) {
+                                let data = {
+                                    link: a.value
+                                };
+                                fetch('http://lpptourism.ru/core/adminzone/files/deleteFilesFromMainPage.php', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json;'
+                                        },
+                                        body: JSON.stringify(data)
+                                    })
+                                    .then(response => response.text())
+                                    .then(res => LoaderDocsMainPage('admin'))
+                                    .catch(err => console.log(err))
+                            }
+                        </script>
+                        <div class="marginTop newDocsMainPageContainer">
+                            Добавить документ:
+                            <input type="file" id="editorAddNewFileMainPage" class="marginTop">
+                            <button class="submitUserEditing marginTop" onclick="addNewDocForMainPage()">Добавить файл</button>
+                        </div>
+                        <div id="ErrForNewFileForMainPage">
+
+                        </div>
+                        <script>
+                            function addNewDocForMainPage() {
+                                let ErrDiv = document.getElementById('ErrForNewFileForMainPage');
+
+                                let data = new FormData();
+                                data.append('newfile', document.getElementById('editorAddNewFileMainPage').files[0])
+
+                                fetchNewFileData('http://lpptourism.ru/core/adminzone/files/addFilesMainPage.php', data)
+                                async function fetchNewFileData(url, data) {
+                                    try {
+                                        const response = await fetch(url, {
+                                            method: 'POST',
+                                            body: data
+                                        })
+                                        const result = await response.text();
+                                        ErrDiv.innerHTML = result;
+                                        LoaderDocsMainPage('admin');
+                                    } catch (error) {
+                                        console.error(error);
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </main>
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton">
+                        <a>Главная</a>
+                    </div>
+                    <div class="menuButtons emptyMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Войти в личный кабинет</a>
+                    </div>
+                </menu>
+            </section>
+
+            <section id="editorPrivate" class="editorSectionsContent" style="display: none;">
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton">
+                        <a>Главная</a>
+                    </div>
+                    <div class="menuButtons emptyMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Войти в личный кабинет</a>
+                    </div>
+                </menu>
+                <main class="mainContainer">
+                    <div class="inlineMainClass mainDocumentsContainerPhone" id="mainDocumentsContainerIdPhone">
+
+                    </div>
+                    <!-- SUMMERNOTE-->
+                    <script type="text/javascript">
+                    function dataLoaderForEditor() {
+                        fetch('http://lpptourism.ru/core/adminzone/editor/dataLoaderForEditor.php')
+                        .then(response => response.json())
+                        .then(result => {
+                        document.getElementById('editorAboutInfoH2').value = result[`InfoH2`];
+                        document.getElementById('editorAboutInfoH1').value = result[`InfoH1`];
+
+                        document.getElementById('editorAboutInfoPhone').value = result[`InfoPhone`];
+                        document.getElementById('editorAboutInfoEmail').value = result[`InfoEmail`];
+
+                        if (result[`checkboxForCoordReg`] == 'true') document.getElementById('editorActivCoordReg').checked = true;
+                        else document.getElementById('editorActivCoordReg').checked = false;
+
+                        document.getElementById('EditorPrivateTextPage').innerHTML = result[`PrivateTextPage`];
+                        document.getElementById('EditorForStartTestPage').innerHTML = result[`StartTestPage`];
+                        document.getElementById('EditorForCreativWorkPage').innerHTML = result[`CreativWorkPage`];
+
+                        document.getElementById('headerLogoImg').src = result[`logoURL_bd`];
+                        document.getElementById('headerPartnerImg').src = result[`PartnerLogoURL_bd`];
+                      });
+                    }
+                    </script>
+                    <div class="inlineMainClass mainInfoContainer" id="mainInfoContainerId">
+                        <div class="private">
+                            <div id="EditorPrivateTextPage" class="editorTextArea">
+
+                            </div>
+
+                        </div>
+                        <div class="privateEntrance">
+                            <div class="privateEntranceText">Уже зарегистрированы?</div>
+                            <div class="privateEntranceBorder">
+                                <div><input type="email" placeholder="email" id="email"></div>
+                                <div><input type="password" placeholder="Пароль" id="password"></div>
+                                <div id="brokenPass"></div>
+                                <div><button>Войти</button></div>
+                                <div class="forgotPassword"><a>Забыли пароль?</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inlineMainClass mainDocumentsContainerPC" id="mainDocumentsContainerIdPC">
+                        <div class="coordRegContainer" id="coordRegContainer">
+                            <!-- EDITED -->
+                            <div class="editorCoordRegButton">
+                                <div class="editorCoordRegButtonText">Показывается ли на странице?</div>
+                                <div class="editorCoordRegButtonInput"><input type="checkbox" name="" id="editorActivCoordReg"></div>
+                            </div>
+                            <div class="coordRegContainerData">
+                                <h3 class="headH">Регистрация для координатора:</h3>
+                                <div>Субъект рф</div>
+                                <select name="coordRegSubject" class="coordRegSelector" id="coordRegSelector">
+                                    <option value="">--субъекты рф--</option>
+                                    <option value="1">Республика Адыгея (Адыгея)</option>
+                                    <option value="2">Республика Алтай</option>
+                                    <option value="3">Республика Башкортостан</option>
+                                    <option value="4">Республика Бурятия</option>
+                                    <option value="5">Республика Дагестан</option>
+                                    <option value="6">Республика Ингушетия</option>
+                                    <option value="7">Кабардино-Балкарская Республика</option>
+                                    <option value="8">Республика Калмыкия</option>
+                                    <option value="9">Карачаево-Черкесская Республика</option>
+                                    <option value="10">Республика Карелия</option>
+                                    <option value="11">Республика Коми</option>
+                                    <option value="12">Республика Крым</option>
+                                    <option value="13">Республика Марий Эл</option>
+                                    <option value="14">Республика Мордовия</option>
+                                    <option value="15">Республика Саха (Якутия)</option>
+                                    <option value="16">Республика Северная Осетия – Алания</option>
+                                    <option value="17">Республика Татарстан (Татарстан)</option>
+                                    <option value="18">Республика Тыва</option>
+                                    <option value="19">Удмуртская Республика</option>
+                                    <option value="20">Республика Хакасия</option>
+                                    <option value="21">Чеченская Республика</option>
+                                    <option value="22">Чувашская Республика – Чувашия</option>
+                                    <option value="23">Алтайский край</option>
+                                    <option value="24">Забайкальский край</option>
+                                    <option value="25">Камчатский край</option>
+                                    <option value="26">Краснодарский край</option>
+                                    <option value="27">Красноярский край</option>
+                                    <option value="28">Пермский край</option>
+                                    <option value="29">Приморский край</option>
+                                    <option value="30">Ставропольский край</option>
+                                    <option value="31">Хабаровский край</option>
+                                    <option value="31">Амурская область</option>
+                                    <option value="33">Архангельская область</option>
+                                    <option value="34">Астраханская область</option>
+                                    <option value="35">Белгородская область</option>
+                                    <option value="36">Брянская область</option>
+                                    <option value="37">Владимирская область</option>
+                                    <option value="38">Волгоградская область</option>
+                                    <option value="39">Вологодская область</option>
+                                    <option value="40">Воронежская область</option>
+                                    <option value="41">Ивановская область</option>
+                                    <option value="42">Иркутская область</option>
+                                    <option value="43">Калининградская область</option>
+                                    <option value="44">Калужская область</option>
+                                    <option value="45">Кемеровская область</option>
+                                    <option value="46">Кировская область</option>
+                                    <option value="47">Костромская область</option>
+                                    <option value="48">Курганская область</option>
+                                    <option value="49">Курская область</option>
+                                    <option value="50">Ленинградская область</option>
+                                    <option value="51">Липецкая область</option>
+                                    <option value="52">Магаданская область</option>
+                                    <option value="53">Московская область</option>
+                                    <option value="54">Мурманская область</option>
+                                    <option value="55">Нижегородская область</option>
+                                    <option value="56">Новгородская область</option>
+                                    <option value="57">Новосибирская область</option>
+                                    <option value="58">Омская область</option>
+                                    <option value="59">Оренбургская область</option>
+                                    <option value="60">Орловская область</option>
+                                    <option value="61">Пензенская область</option>
+                                    <option value="62">Псковская область</option>
+                                    <option value="63">Ростовская область</option>
+                                    <option value="64">Рязанская область</option>
+                                    <option value="65">Самарская область</option>
+                                    <option value="66">Саратовская область</option>
+                                    <option value="67">Сахалинская область</option>
+                                    <option value="68">Свердловская область</option>
+                                    <option value="69">Смоленская область</option>
+                                    <option value="70">Тамбовская область</option>
+                                    <option value="71">Тверская область</option>
+                                    <option value="72">Томская область</option>
+                                    <option value="73">Тульская область</option>
+                                    <option value="74">Тюменская область</option>
+                                    <option value="75">Ульяновская область</option>
+                                    <option value="76">Челябинская область</option>
+                                    <option value="77">Ярославская область</option>
+                                    <option value="78">Город Москва</option>
+                                    <option value="79">Город Санкт-Петербург</option>
+                                    <option value="80">Город Севастополь</option>
+                                    <option value="81">Еврейская автономная область</option>
+                                    <option value="82">Ненецкий автономный округ</option>
+                                    <option value="83">Ханты-Мансийский автономный округ – Югра</option>
+                                    <option value="84">Чукотский автономный округ</option>
+                                    <option value="85">Ямало-Ненецкий автономный округ</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div>Фамилия:</div>
+                                <input type="text" placeholder="Фамилия" id="coordLastName">
+                            </div>
+                            <div>
+                                <div>Имя Отчество:</div>
+                                <input type="text" placeholder="Имя Отчество" id="coordFirstName">
+                            </div>
+                            <div>
+                                <div>Контактный номер телефона (рабочий):</div>
+                                <input type="tel" placeholder="Рабочий номер телефона" id="coordWorkPhone">
+                            </div>
+                            <div>
+                                <div>Контактный номер телефона (мобильный):</div>
+                                <input type="tel" placeholder="Мобильный" id="coordMobilePhone">
+                            </div>
+                            <div>
+                                <div>Адрес электронной почты (он же логин):</div>
+                                <input type="email" placeholder="Email" id="coordEmail">
+                            </div>
+                            <div>
+                                <div>Согласие на обработку персональных данных:</div>
+                                <input type="checkbox" class="checkbox" id="coordCheckbox">
+                            </div>
+                            <div id="coordRegErr"></div>
+                            <div class="coordRegButtonDiv">
+                                <button>Подтвердить</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="loaderWindow">
+                        <div>
+                            Ваша заявка будет одобрена после подтверждения администратором<br> Дождитесь звонка специалиста<br>
+                            <button onclick="document.getElementById('loaderWindow').style.display = 'none';">Заркыть</button>
+                        </div>
+                    </div>
+                </main>
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton">
+                        <a>Главная</a>
+                    </div>
+                    <div class="menuButtons emptyMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Войти в личный кабинет</a>
+                    </div>
+                </menu>
+            </section>
+
+            <section id="editorCoordFiles" class="editorSectionsContent" style="display: none;">
+                <menu class="coordMenuContainer" id="coordMenuContainer">
+                    <div class="coordCabinetContainer">
+                        <button class="coordCabinet">Личный кабинет</button>
+                    </div>
+                    <div class="coordRegulationsContainer">
+                        <button class="coordRegulations">Скачать нормативные документы</button>
+                    </div>
+                    <div class="coordDownloadWorkLogContainer">
+                        <button class="coordDownloadWorkLog">Загрузить протоколы работы конкурсной комиссии</button>
+                    </div>
+                    <div class="coordCreateProfileContainer">
+                        <button class="coordCreateProfile">Создать профиль участника федерального этапа</button>
+                    </div>
+                    <div class="coordExitContainer">
+                        <button class="coordExit">Выйти</button>
+                    </div>
+                </menu>
+                <div id="coordPageRegulations" class="coordPageRegulations" style="display: block;">
+                    <!-- SUMMERNOTE -->
+                    <h2 class="headH">Список нормативных документов для координаторов</h2>
+                    <div id="coordsDocsContainer" class="coordsDocsContainer">
+                        <div>
+                            <div class="coordsDocsContainerLink"><a href=""></a></div>
+                            <div class="coordsDocsContainerButton"><button onclick="dellCoordButtonClick()" class="dellDocButton">X</button></div>
+                        </div>
+                    </div>
+                    <script>
+                        function loadDocsForCoorPage() {
+                            fetch ('http://lpptourism.ru/core/adminzone/editor/coordFilesList.php')
+                                .then(response => response.text())
+                                .then(result => document.getElementById('coordsDocsContainer').innerHTML = result)
+                        }
+                        function dellCoordButtonClick(id) {
+                            let data = {
+                                link: id.value
+                            }
+                            fetch('http://lpptourism.ru/core/adminzone/editor/dellCoordsDocs.php',{
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data)
+                            })
+                                .then(response => response.text())
+                                .then(result => {
+                                    loadDocsForCoorPage()
+                                })
+                                .then(error => console.log(error))
+                        }
+                        loadDocsForCoorPage();
+                    </script>
+                    <div class="loadCoordDocButtons">
+                        <input type="file" name="" id="newCoordDocInput">
+                        <button onclick="LoadFileForCoordsList()">Отправить</button>
+                    </div>
+                    <script>
+                        function LoadFileForCoordsList() {
+                            let data = new FormData() ;
+                            let newfile = document.getElementById('newCoordDocInput').files[0];
+                            data.append('newCoordDoc',newfile)
+                            fetch ('http://lpptourism.ru/core/adminzone/editor/loadFilesForCoordsList.php',{
+                                method: 'POST',
+                                body: data
+                            })
+                            .then(response => response.text())
+                            .then(result => loadDocsForCoorPage())
+                        }
+                    </script>
+                </div>
+                <menu class="coordMenuContainer" id="coordMenuContainer">
+                    <div class="coordCabinetContainer">
+                        <button class="coordCabinet">Личный кабинет</button>
+                    </div>
+                    <div class="coordRegulationsContainer">
+                        <button class="coordRegulations">Скачать нормативные документы</button>
+                    </div>
+                    <div class="coordDownloadWorkLogContainer">
+                        <button class="coordDownloadWorkLog">Загрузить протоколы работы конкурсной комиссии</button>
+                    </div>
+                    <div class="coordCreateProfileContainer">
+                        <button class="coordCreateProfile">Создать профиль участника федерального этапа</button>
+                    </div>
+                    <div class="coordExitContainer">
+                        <button class="coordExit">Выйти</button>
+                    </div>
+                </menu>
+            </section>
+
+            <section id="editorPartTestPage" class="editorSectionsContent" style="display: none;">
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton"><a>Главная</a></div>
+                    <div class="menuButtons mainPageMenuPartLK"><a>Личный кабинет</a></div>
+                    <div class="menuButtons emptyPartMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Выход</a>
+                    </div>
+                </menu>
+                <!-- SUMMERNOTE-->
+                <div id='startTestContainer' class='testContainer AdminTestContainer'>
+                    <div class="startTestContent editorTextArea" id="EditorForStartTestPage">
+
+                    </div>
+                </div>
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton"><a>Главная</a></div>
+                    <div class="menuButtons mainPageMenuPartLK"><a>Личный кабинет</a></div>
+                    <div class="menuButtons emptyPartMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Выход</a>
+                    </div>
+                </menu>
+            </section>
+
+            <section id="editorPartCreativeWord" class="editorSectionsContent" style="display: none;">
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton"><a>Главная</a></div>
+                    <div class="menuButtons mainPageMenuPartLK"><a>Личный кабинет</a></div>
+                    <div class="menuButtons emptyPartMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Выход</a>
+                    </div>
+                </menu>
+                <main class="mainContainer">
+                    <!--container for uploading creative work-->
+                    <div class="creativeWorkLoadContainer">
+                        <div>
+                            <h1 class="headH">Вставьте ссылку на Вашу творческую работу</h1>
+                        </div>
+                        <div><input type="text" placeholder="Творческая работа" id="linkOnCreativWork"></div>
+                        <div id="errorLink" style="display: none; color: red;"></div>
+                        <div><button>Загрузить работу</button></div>
+                    </div>
+                    <!--description of creative work-->
+                    <div class="creativeWorkInfo editorTextAreaBig" id="EditorForCreativWorkPage">
+
+                    </div>
+                </main>
+                <menu class="menuContainer">
+                    <div class="menuButtons mainPageMenuButton"><a>Главная</a></div>
+                    <div class="menuButtons mainPageMenuPartLK"><a>Личный кабинет</a></div>
+                    <div class="menuButtons emptyPartMenuButton"></div>
+                    <div class="menuButtons entranceMenuButton">
+                        <a>Выход</a>
+                    </div>
+                </menu>
+            </section>
+
+            <script>
+
+            function dataLoaderForEditor() {
+                fetch('http://lpptourism.ru/core/adminzone/editor/dataLoaderForEditor.php')
+                .then(response => response.json())
+                .then(result => {
+
+                document.getElementById('editorAboutInfoH2').value = result[`InfoH2`];
+                document.getElementById('editorAboutInfoH1').value = result[`InfoH1`];
+
+                document.getElementById('editorAboutInfoPhone').value = result[`InfoPhone`];
+                document.getElementById('editorAboutInfoEmail').value = result[`InfoEmail`];
+
+                if (result[`checkboxForCoordReg`] == 'true') document.getElementById('editorActivCoordReg').checked = true;
+                else document.getElementById('editorActivCoordReg').checked = false;
+
+                let PrivateTextPage = result[`PrivateTextPage`];
+                let StartTestPage = result[`StartTestPage`];
+                let CreativWorkPage = result[`CreativWorkPage`];
+
+                document.getElementById('EditorPrivateTextPage').innerHTML = result[`PrivateTextPage`];
+                document.getElementById('EditorForStartTestPage').innerHTML = result[`StartTestPage`];
+                document.getElementById('EditorForCreativWorkPage').innerHTML = result[`CreativWorkPage`];
+
+                summerDescEdit = document.getElementsByClassName('editorTextArea');
+                for (let i = 0; i < summerDescEdit.length; i++) {
+                        $('.editorTextArea').eq(i).summernote({
+                          toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            ['fontsize', ['fontsize']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['fontname', ['fontname']]
+                          ],
+                          fontSizes: ['8', '9','10','11','12','13','14','15','16', '18', '24','36'],
+                            lang: 'ru-RU',
+                            minHeight: 100,
+                            maxHeight: 350,
+                            height: 250, // set editor height
+                            focus: true, // set focus to editable area after initializing summernote
+                            disableDragAndDrop: true,
+                            placeholder: 'Текст'
+                        });
+                        $('.editorTextAreaBig').eq(i).summernote({
+                          toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            ['fontsize', ['fontsize']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['fontname', ['fontname']]
+                          ],
+                          fontSizes: ['8', '9','10','11','12','13','14','15','16','18', '24','36'],
+                            lang: 'ru-RU',
+                            minHeight: 350,
+                            maxHeight: 550,
+                            height: 450, // set editor height
+                            focus: true, // set focus to editable area after initializing summernote
+                            disableDragAndDrop: true,
+                            placeholder: 'Текст'
+                        });
+                    }
+
+                document.getElementById('headerLogoImg').src = result[`logoURL_bd`];
+                document.getElementById('headerPartnerImg').src = result[`PartnerLogoURL_bd`];
+              });
+            }
+
+            </script>
+
+            <!-- тут футер -->
+            <section>
+                <div>
+                    <!-- black information contant about project-->
+                    <div class="blackInformationContainer">
+                        <div class="informationContainer">
+                            <div class="inlineContainer logoContainer">
+                                <img src="http://lpptourism.ru/files/logos/lpit_logo_light.png" alt="">
+                            </div>
+                            <div class="inlineContainer contacts">
+                                <div class="contactsContainer">
+                                    <div>
+                                        Оргкомитет:<br>
+                                        <a href="tel:8 800 700 37 26">8 800 700 37 26</a><br>
+                                        <a href="mailto:lpptourism@gmail.com">lpptourism@gmail.com</a><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <script>
+                dataLoaderForEditor();
+            </script>
+        </section>
+    </div>
+
+    <script>
+        function NewsLoaderFunc() {
+            fetch('http://lpptourism.ru/core/adminzone/newsList.php')
+                .then(response => response.text())
+                .then(res => {
+                    document.getElementById('newsListContainer').innerHTML = res
+                    summerDescEdit = document.getElementsByClassName('editNewsSummerDescription');
+                    for (let i = 0; i < summerDescEdit.length; i++) {
+                        $('.editNewsSummerDescription').eq(i).summernote({
+                          toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            ['fontsize', ['fontsize']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['fontname', ['fontname']]
+                          ],
+                          fontSizes: ['8', '9','10','11','12','13','14','15','16', '18', '24','36'],
+                            lang: 'ru-RU',
+                            minHeight: 50,
+                            maxHeight: 200,
+                            height: 100, // set editor height
+                            minHeight: null, // set minimum height of editor
+                            maxHeight: null, // set maximum height of editor
+                            focus: true, // set focus to editable area after initializing summernote
+                            disableDragAndDrop: true,
+                            placeholder: 'Описание'
+                        })
+                        $('.editNewsSummerText').eq(i).summernote({
+                          toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['strikethrough', 'superscript', 'subscript']],
+                            ['fontsize', ['fontsize']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['fontname', ['fontname']]
+                          ],
+                          fontSizes: ['8', '9','10','11','12','13','14','15','16', '18', '24','36'],
+                            lang: 'ru-RU',
+                            minHeight: 50,
+                            maxHeight: 200,
+                            height: 100, // set editor height
+                            minHeight: null, // set minimum height of editor
+                            maxHeight: null, // set maximum height of editor
+                            focus: true, // set focus to editable area after initializing summernote
+                            disableDragAndDrop: true,
+                            placeholder: 'Содержание'
+                        })
+                    }
+                })
+                .catch(err => {
+                    document.getElementById('errDivForNewsEditor').innerHTML = 'Произошла ошибка загрузки новостей';
+                    console.log(err);
+                })
+        }
+        NewsLoaderFunc();
+    </script>
+
+</body>
+<script type="text/javascript">
+    let timerId = setInterval(() => TokenCheck('http://lpptourism.ru/core/token.php', 'adminzone/index'), 15000);
+</script>
+
+</html>

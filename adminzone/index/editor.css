@@ -1,0 +1,137 @@
+.editorInput {
+    border: none;
+    background: rgba(96, 209, 96, 0.25);
+    border-radius: 8px;
+    padding: 8px;
+    width: 90%;
+}
+
+.editorColor {
+    background: rgba(96, 209, 96, 0.25);
+    border: none;
+    border-radius: 8px;
+}
+
+.informationContainer {
+    margin: 40px auto;
+}
+
+.editorSectionsContent {
+    width: 100%;
+}
+
+.editorImg {
+    border: 5px solid rgba(96, 209, 96, 0.25);
+    border-radius: 8px;
+}
+
+#editorAboutInfoH2,
+#editorAboutInfoH1 {
+    font-size: 16px;
+}
+
+.newDocsMainPageContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.dellDocButton {
+    padding: 3px 5px;
+    text-align: center;
+    color: #ffffff;
+    background: rgb(158, 45, 45);
+    border: none;
+    border-radius: 8px;
+}
+
+.dellDocButton:hover {
+    background: rgb(200, 45, 45, 0.8);
+}
+
+.linksMargin a {
+    margin-right: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #444444;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.editorButtons {
+    background: #c89b46;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 8px 30px;
+    margin: 15px 0 30px 0;
+    border-radius: 5px;
+}
+
+.marginTop {
+    margin: 10px 0;
+}
+/*
+.editorTextArea {
+    width: 95%;
+    border: none;
+    border-radius: 8px;
+    background: rgba(96, 209, 96, 0.25);
+}
+*/
+.AdminTestContainer {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.editorCoordRegButton {
+    width: 100%;
+    background: rgba(96, 209, 96, 0.25);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.editorCoordRegButton div {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -4px;
+    padding: 5px;
+}
+.editorCoordRegButtonText {
+    widows: 90%;
+}
+
+.editorCoordRegButtonInput {
+    width: 10%;
+    text-align: right;
+}
+.editorCoordRegButton input {
+    width: 20px;
+    height: 20px;
+}
+
+.coordsDocsContainer {
+    width: 50%;
+    margin: 15px auto;
+}
+
+.coordsDocsContainerLink {
+    display: inline-block;
+    vertical-align: middle;
+    width: 90%;
+    text-align: left;
+    margin-right: -4px;
+    margin-top: 10px;
+}
+
+.coordsDocsContainerButton {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+    text-align: right;
+    margin-right: -4px;
+    margin-top: 10px;
+}
+.loadCoordDocButtons {
+    width: 50%;
+    margin: 10px auto;
+}

@@ -1,0 +1,83 @@
+.adminEntrance {
+    width: 90%;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.adminEntranceText {
+    color: #4B7FB6;
+    margin: 10px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.adminEntranceBorder {
+    border: 4px solid #C89B46;
+    border-radius: 10px;
+}
+
+#brokenPass {
+    color: red;
+    text-align: left;
+}
+
+.adminEntranceBorder div {
+    width: 90%;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.adminEntranceBorder input {
+    height: 55px;
+    padding: 0 20px;
+    width: calc(100% - 40px);
+    background: #DFDFDF;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.adminEntranceBorder input :active,
+ :hover,
+ :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.adminEntranceBorder input::placeholder {
+    font-size: 16px;
+}
+
+.adminEntranceBorder button {
+    background: #C89B46;
+    border: none;
+    color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    height: 55px;
+    font-size: 16px;
+}
+
+.adminEntranceBorder button:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.adminEntranceBorder button::-moz-focus-inner {
+    border: none;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .adminEntrance {
+        width: 490px;
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    .adminEntrance {
+        width: 490px;
+    }
+}

@@ -1,0 +1,71 @@
+.creativeWorkInfo {
+  font-size: 16px;
+  color: #666666;
+  text-align: left;
+}
+
+.creativeWorkInfo h2 {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.creativeWorkInfo h1 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #4B7FB6;
+}
+
+.creativeWorkLoadContainer {
+  width: 100%;
+  font-size: 16px;
+  color: #666666;
+  margin: auto;
+  padding: 15px 0;
+}
+
+.creativeWorkLoadContainer div {
+  margin: 10px 0;
+}
+
+.creativeWorkLoadContainer h1 {
+  font-weight: bold;
+  font-size: 18px;
+  color: #4B7FB6;
+}
+
+.creativeWorkLoadContainer input {
+  padding: 10px;
+  font-size: 16px;
+  width: calc(100% - 20px);
+  border-radius: 10px;
+  background: #dfdfdf;
+  border: none;
+}
+
+.creativeWorkLoadContainer input:focus {
+  outline: none;
+}
+
+.creativeWorkLoadContainer button {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background: #4E82B7;
+  color: #ffffff;
+}
+
+.creativeWorkLoadContainer button:hover {
+  color: #4B7FB6;
+  background: #EEEEEE;
+}
+
+.creativeWorkLoadContainer button:focus {
+  outline: none;
+}
+
+.creativeWorkLoadContainer button::-moz-focus-inner {
+  border: none;
+}

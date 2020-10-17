@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="adminzoneenter.css">
+    <link rel="stylesheet" href="adminzone.css">
+    <script src="http://lpptourism.ru/JS/login.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <!-- main information about lpptourism and other-->
+        <div id="headerDiv">
+
+        </div>
+
+        <!-- button to go in main page and in other pages-->
+        <div id="menuNav">
+            <div class="adminEntrance">
+                <div class="adminEntranceText">Панель администрирования</div>
+                <div class="adminEntranceBorder">
+                    <div><input type="email" placeholder="email" id="adminemail"></div>
+                    <div><input type="password" placeholder="Пароль" id="adminpassword"></div>
+                    <div id="brokenPass"></div>
+                    <div><button onclick="userLogin()">Войти</button></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- main part, dynamic updated to other pages-->
+        <div id="mainPartOfPage">
+
+        </div>
+    </div>
+    <div id="footerDiv">
+
+    </div>
+</body>
+
+<script>
+    TokenCheck('http://lpptourism.ru/core/token.php', 'adminzone/index');
+</script>
+
+</html>

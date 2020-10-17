@@ -1,0 +1,84 @@
+.oneEditedUser {
+    width: 95%;
+    margin: auto;
+    border-bottom: 1px solid #444444;
+}
+
+.visiblePartOfEdit {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.visiblePartOfEditLeft {
+    width: 40px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.visiblePartOfEditLeft input {
+    width: 25px;
+    height: 25px;
+}
+
+.visiblePartOfEditRight {
+    text-align: left;
+    width: calc(100% - 50px);
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.visiblePartOfEditRight div {
+    padding-left: 10px;
+}
+
+.loaderForUsers {
+    margin-bottom: 250px;
+}
+
+.hiddenUsersButton {
+    width: 100%;
+    background: #c89b46;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    padding: 5px 0;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.hiddenEditorAdminsFullInfo {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.hiddenEditorAdminsFullInfo div {
+    width: 100%;
+    font-size: 16px;
+    color: #666666;
+    text-align: left;
+    margin: 5px 10px;
+}
+
+.hiddenEditorAdminInputs {
+    text-align: center;
+}
+
+@media screen and (min-device-width: 760px) {
+    .hiddenPartOfButtons {
+        width: 80%;
+        margin: auto;
+    }
+    .hiddenPartOfButtons div {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20%;
+        margin: 10px 2%;
+    }
+    .visiblePartOfEditRight div {
+        display: inline-block;
+    }
+}

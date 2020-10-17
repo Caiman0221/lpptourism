@@ -1,0 +1,168 @@
+.testContainer {
+    width: 95%;
+    margin: 10px auto;
+    font-size: 16px;
+    color: #555555;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    .testContainer {
+        width: calc(720px * 0.95);
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    .testContainer {
+        width: calc(960px * 0.95);
+    }
+}
+
+.testButtonsContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.testButtons {
+    padding: 8px 20px;
+    color: #ffffff;
+    background: #c89b46;
+    margin: 10px auto;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+.testButtons:hover {
+    background: #FACD78;
+    color: #966914;
+}
+
+.testButtonConfirm {
+    padding: 8px 20px;
+    color: #ffffff;
+    background: #339933;
+    margin: 10px auto;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+.testButtonConfirm:hover {
+    background: #00c700;
+}
+
+.testContentQuestion {
+    width: 90%;
+    text-align: left;
+    font-size: 18px;
+    margin: 20px auto;
+    border-bottom: 1px solid #999999;
+}
+
+.testContentAnswers {
+    width: 100%;
+}
+
+.testContentAnswers div {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.testContentAnswers span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.testAnswer {
+    width: 92%;
+    margin-right: -4px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.testCheckbox {
+    width: 8%;
+    margin-right: -4px;
+    text-align: right;
+}
+
+.testCheckbox label {
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    background: #dfdfdf;
+}
+
+.testCheckbox input {
+    display: none;
+}
+
+.testErrorDiv {
+    width: 90%;
+    margin: 50px auto;
+    font-size: 18px;
+    color: #666666;
+    text-align: center;
+}
+
+.errorDivTestListParts {
+    width: 90%;
+    font-size: 16px;
+    margin: auto;
+    text-align: center;
+}
+
+.creativeTableContainer {
+    font-size: 14px;
+    width: 90%;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.creativeTableTR {
+    width: 100%;
+    margin: 10px auto;
+}
+
+.creativeTableTR div {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: -4px;
+}
+.creativeTableLeftTD {
+    width: 80%;
+    text-align: left;
+}
+
+@media screen and (min-device-width: 760px) {
+    .creativeTableLeftTD {
+        width: 60%;
+        text-align: left;
+    }
+}
+
+.creativeTableRightTD {
+    width: 10%;
+    text-align: right;
+}
+
+.partTestResultsTableHeader {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    font-size: 16px;
+}
+
+.partTestResultsTableHeader button {
+    padding: 5px;
+    border: none;
+    color: #fff;
+    background: #b21406;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.partTestResultsTableHeader button:hover {
+    background: #ff1500;
+}

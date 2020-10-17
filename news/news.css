@@ -1,0 +1,53 @@
+#mainPartOfPage section {
+    width: 90%;
+    margin: 5px auto;
+    font-size: 16px;
+}
+
+#mainPartOfPage h2 {
+    font-size: 18px;
+    color: #4f83b8;
+    margin: 0;
+}
+
+#mainPartOfPage img {
+    max-width: 90%;
+    margin: 15px 0;
+    max-height: 450px;
+}
+
+.mainPageSectionWithNews {
+    padding: 10px 0;
+}
+
+.mainPageSectionWithNews a {
+    text-decoration: none;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    #mainPartOfPage {
+        width: 720px;
+        margin: auto;
+    }
+    #mainPartOfPage section {
+        width: 490px;
+        display: inline-block;
+    }
+    .mainPageSectionWithNews {
+        padding: 0;
+    }
+}
+
+@media screen and (min-device-width: 995px) {
+    #mainPartOfPage {
+        width: 940px;
+        margin: auto;
+    }
+    #mainPartOfPage section {
+        width: 625px;
+        display: inline-block;
+    }
+    .mainPageSectionWithNews {
+        padding: 0;
+    }
+}

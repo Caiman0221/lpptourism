@@ -1,0 +1,530 @@
+html,
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    background: #fff;
+    font-size: 16px;
+}
+
+.wrapper {
+    min-height: 100%;
+}
+
+.wrapper::after {
+    display: block;
+    height: 50px;
+    content: '';
+}
+
+.informationContainer {
+    width: 90%;
+    margin: auto;
+}
+
+.logoContainer img {
+    width: 50%;
+}
+
+.aboutInfo h2 {
+    color: #C79941;
+    font-style: normal;
+    font-size: 16px;
+}
+
+.aboutInfo h1 {
+    color: #4B7FB6;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.contacts {
+    display: none;
+}
+
+.tourismLogo {
+    display: none;
+}
+
+.menuContainer {
+    width: 90%;
+    margin: auto;
+    padding: 0;
+}
+
+.menuButtons {
+    width: 100%;
+    margin: auto;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.mainPageMenuButton {
+    background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+    border-radius: 10px 10px 0 0;
+}
+
+.mainPageMenuButton a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.mainPageMenuPartLK {
+    background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+}
+
+.mainPageMenuPartLK a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.emptyPartMenuButton {
+    display: none;
+}
+
+.emptyMenuButton {
+    display: none;
+}
+
+.entranceMenuButton {
+    background: #c89b46;
+    border-radius: 0 0 10px 10px;
+}
+
+.entranceMenuButton a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+}
+
+.mainContainer {
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.mainDocumentsContainerPC {
+    display: none;
+}
+
+.blackInformationContainer {
+    background: #2B2E2F;
+    width: 100%;
+    padding: 20px 0 40px 0;
+    height: 350px;
+}
+
+.blackInformationContainer .contacts {
+    display: block;
+    font-size: 18px;
+    color: #fff;
+}
+
+.blackInformationContainer .contacts a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.linksMargin a {
+    margin-right: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #444444;
+    text-decoration: none;
+    max-width: 80%;
+}
+
+.MainPageDocs {
+    text-align: center;
+    width: 95%;
+    margin: auto;
+}
+
+.MainPageDocs div {
+    max-width: 100%;
+    margin: 10px 0;
+}
+
+.MainPageDocs a {
+    word-wrap: break-word;
+}
+
+#containerLoadedFilesForPart div {
+  padding-top: 10px;
+}
+
+#containerLoadedFilesForPart a {
+  color: #666666;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+@media screen and (min-device-width: 760px) and (max-device-width: 995px) {
+    html,
+    body {
+        font-size: 14px;
+        text-align: left;
+    }
+    .wrapper {
+        min-height: 100%;
+    }
+    .wrapper::after {
+        display: block;
+        height: 300px;
+        content: '';
+    }
+    header {
+        padding: 15px 0;
+    }
+    .informationContainer {
+        width: 720px;
+        height: 150px;
+    }
+    .inlineContainer {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .logoContainer {
+        width: 140px;
+        max-height: 120px;
+        margin: 0;
+    }
+    .logoContainer img {
+        width: 140px;
+    }
+    .aboutInfo {
+        margin: 0;
+        width: 192px;
+        padding-left: 10px;
+    }
+    .aboutInfo h2 {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+    }
+    .aboutInfo h1 {
+        font-size: 18px;
+        padding: 0;
+        margin: 0;
+    }
+    .contacts {
+        color: #333333;
+        width: 186px;
+        padding: 0 10px;
+        border: 3px solid #ededed;
+        border-bottom: none;
+        border-top: none;
+    }
+    .contactsContainer {
+        vertical-align: middle;
+    }
+    .contactsContainer div {
+        height: auto;
+    }
+    .contacts a {
+        color: #4B7FB6;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .contacts a:hover {
+        text-decoration: underline;
+    }
+    .tourismLogo {
+        text-align: right;
+    }
+    .tourismLogo img {
+        width: 140px;
+    }
+    .menuContainer {
+        width: 720px;
+        height: 40px;
+        border-radius: 4px;
+    }
+    .menuButtons {
+        display: inline-block;
+        margin-right: -5px;
+        height: 40px;
+        vertical-align: middle;
+    }
+    .mainPageMenuButton {
+        width: 95px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 4px 0 0 4px;
+    }
+    .mainPageMenuButton a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        font-size: 15px;
+    }
+    .mainPageMenuPartLK {
+        background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+        width: 150px;
+    }
+    .mainPageMenuPartLK a {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        text-align: center;
+    }
+    .emptyPartMenuButton {
+        background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+        width: calc(720px - 475px);
+    }
+    .emptyMenuButton {
+        width: calc(720px - 325px);
+        background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+    }
+    .entranceMenuButton {
+        width: 230px;
+        text-align: center;
+        line-height: 40px;
+        background: #c89b46;
+        border-radius: 0 4px 4px 0;
+    }
+    .entranceMenuButton a {
+        font-size: 15px;
+    }
+    /*.entranceMenuButton:hover {
+        background: #FACD78;
+        color: #966914;
+    }*/
+    .mainContainer {
+        width: 720px;
+        padding: 20px 0;
+    }
+    .inlineMainClass {
+        display: inline-block;
+        margin-right: -6px;
+        vertical-align: top;
+    }
+    .mainInfoContainer {
+        width: calc(720px - 230px - 40px);
+        padding: 0 20px;
+    }
+    .mainDocumentsContainerPhone {
+        display: none;
+    }
+    .mainDocumentsContainerPC {
+        width: 230px;
+        margin-top: 20px;
+    }
+    footer {
+        margin-top: -210px;
+        height: 210px;
+    }
+    .blackInformationContainer {
+        height: 190px;
+        padding: 10px 0;
+    }
+    .blackInformationContainer .inlineContainer {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .blackInformationContainer .contacts {
+        display: inline-block;
+        font-size: 14px;
+        border: none;
+    }
+    /*.blackContacts a:hover {
+        text-decoration: underline;
+    }*/
+    .MainPageDocs {
+        text-align: left;
+    }
+}
+
+
+/* media for PC */
+
+@media screen and (min-device-width: 995px) {
+    html,
+    body {
+        font-size: 14px;
+        text-align: left;
+    }
+    .wrapper {
+        min-height: 100%;
+        margin: auto;
+    }
+    .wrapper::after {
+        display: block;
+        height: 300px;
+        content: '';
+    }
+    header {
+        padding: 15px 0 25px 0;
+    }
+    .informationContainer {
+        width: 940px;
+        height: 120px;
+    }
+    .inlineContainer {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .logoContainer {
+        width: 140px;
+        max-height: 120px;
+        margin: 0;
+    }
+    .logoContainer img {
+        width: 140px;
+    }
+    .aboutInfo {
+        margin: 0;
+        width: 340px;
+        padding-left: 15px;
+    }
+    .aboutInfo h2 {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+    }
+    .aboutInfo h1 {
+        font-size: 18px;
+        padding: 0;
+        margin: 0;
+    }
+    .contacts {
+        color: #333333;
+        width: 228px;
+        padding: 0 15px;
+        border: 3px solid #ededed;
+        border-bottom: none;
+        border-top: none;
+    }
+    .contactsContainer {
+        height: 100%;
+        vertical-align: middle;
+    }
+    .contacts a {
+        color: #4B7FB6;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .contacts a:hover {
+        text-decoration: underline;
+    }
+    .tourismLogo {
+        text-align: right;
+    }
+    .tourismLogo img {
+        width: 140px;
+    }
+    .menuContainer {
+        width: 940px;
+        height: 40px;
+        border-radius: 4px;
+    }
+    .menuButtons {
+        display: inline-block;
+        margin-right: -5px;
+        height: 40px;
+        vertical-align: middle;
+    }
+    .mainPageMenuButton {
+        width: 95px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 4px 0 0 4px;
+    }
+    .mainPageMenuButton a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        font-size: 15px;
+    }
+    .mainPageMenuButton a:hover {
+        color: #4B7FB6;
+        background: #EEEEEE;
+        border-radius: 4px 0 0 4px;
+    }
+    .mainPageMenuPartLK {
+        background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+        width: 150px;
+    }
+    .mainPageMenuPartLK a {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        font-size: 15px;
+        text-align: center;
+    }
+    .mainPageMenuPartLK a:hover {
+        color: #4B7FB6;
+        background: #EEEEEE;
+    }
+    .emptyPartMenuButton {
+        background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+        width: 380px;
+    }
+    .emptyMenuButton {
+        width: calc(940px - 410px);
+        background: linear-gradient(rgb(87, 135, 187), rgb(70, 124, 180));
+    }
+    .entranceMenuButton {
+        width: 310px;
+        text-align: center;
+        line-height: 40px;
+        background: #c89b46;
+        border-radius: 0 4px 4px 0;
+    }
+    .entranceMenuButton a {
+        font-size: 15px;
+    }
+    .entranceMenuButton:hover {
+        background: #FACD78;
+        color: #966914;
+    }
+    .mainContainer {
+        width: 940px;
+        padding: 20px 0;
+    }
+    .inlineMainClass {
+        display: inline-block;
+        margin-right: -5px;
+        vertical-align: top;
+    }
+    .mainInfoContainer {
+        width: 625px;
+    }
+    .mainDocumentsContainerPhone {
+        display: none;
+    }
+    .mainDocumentsContainerPC {
+        width: 310px;
+        margin-top: 20px;
+    }
+    footer {
+        margin-top: -210px;
+        height: 210px;
+    }
+    .blackInformationContainer {
+        height: 180px;
+        padding: 15px 0;
+    }
+    .blackInformationContainer,
+    .inlineContainer {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .blackInformationContainer .contacts {
+        display: inline-block;
+        font-size: 14px;
+        border: none;
+    }
+    .MainPageDocs {
+        text-align: left;
+    }
+}
